@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- Para el diseño responsivo -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clonspotify</title>
+
+  <!-- Para poder usar fuentes desde google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">
+      <span class="brand-icon">♪</span>
+      <span class="brand-name">Clonspotify</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#inicio" class="active">Inicio</a></li>
+      <li><a href="#catalogo">Catálogo</a></li>
+      <li><a href="#favoritas">Favoritas</a></li>
+      <li><a href="#playlists">Playlists</a></li>
+      <li><a href="#estadisticas">Estadísticas</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- BIENVENIDA -->
+    <section id="inicio" class="hero">
+      <div class="hero-text">
+        <h1>Bienvenido a <span class="accent">Clonspotify</span></h1>
+        <p class="subtitle">Tu biblioteca personal de música</p>
+      </div>
+    </section>
+
+    <!-- STATS
+        Las tarjetas-->
+    <section class="stats-grid" id="stats">
+      <div class="stat-card">
+        <div class="stat-icon">♫</div>
+        <div class="stat-label">Total canciones</div>
+        <div class="stat-value" id="stat-total">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">👤</div>
+        <div class="stat-label">Artistas</div>
+        <div class="stat-value" id="stat-artistas">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">♥</div>
+        <div class="stat-label">Favoritas</div>
+        <div class="stat-value" id="stat-favoritas">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">◈</div>
+        <div class="stat-label">Géneros</div>
+        <div class="stat-value" id="stat-generos">—</div>
+      </div>
+    </section>
+
+    <!-- Sección de canciones recientes y géneros -->
+    <section class="two-col">
+
+      <div class="panel" id="recientes">
+        <h2 class="panel-title">Canciones recientes</h2>
+        <ul class="song-list" id="lista-recientes"></ul>
+      </div>
+
+      <div class="panel" id="por-genero">
+        <h2 class="panel-title">Por género</h2>
+        <div class="genre-bars" id="genre-bars"></div>
+      </div>
+
+    </section>
+
+    <!-- CATÁLOGO COMPLETO -->
+    <section id="catalogo">
+      <h2 class="section-title">Catálogo completo</h2>
+
+      <div class="filter-bar">
+        <input type="text" id="buscador" placeholder="Buscar por título o artista…" />
+        <select id="filtro-genero">
+          <option value="">Todos los géneros</option>
+        </select>
+        <select id="filtro-idioma">
+          <option value="">Todos los idiomas</option>
+          <option value="es">Español</option>
+          <option value="en">Inglés</option>
+        </select>
+      </div>
+
+      <table class="catalogo-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Título</th>
+            <th>Artista</th>
+            <th>Álbum</th>
+            <th>Género</th>
+            <th>Año</th>
+            <th>Duración</th>
+            <th>★</th>
+            <th>Fav</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-cuerpo"></tbody>
+      </table>
+    </section>
+
+    <!-- FAVORITAS -->
+    <section id="favoritas">
+      <h2 class="section-title">Favoritas</h2>
+      <div class="cards-grid" id="grid-favoritas"></div>
+    </section>
+
+    <!-- PLAYLISTS -->
+    <section id="playlists">
+      <h2 class="section-title">Playlists</h2>
+      <div class="playlist-grid" id="playlist-grid"></div>
+    </section>
+
+    <!-- ESTADÍSTICAS -->
+    <section id="estadisticas">
+      <h2 class="section-title">Estadísticas</h2>
+      <div class="stats-detail" id="stats-detail"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Clonspotify &mdash; Biblioteca musical personal &mdash; <span id="footer-version"></span></p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

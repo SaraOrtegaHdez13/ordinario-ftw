@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE biblioteca SYSTEM "biblioteca.dtd">
+
+<biblioteca version="1.0">
+
+  <canciones>
+
+    <!-- BALADA -->
+    <cancion id="c001" estado="activa">
+      <titulo>El Triste</titulo>
+      <artista id="a001">
+        <nombre>José José</nombre>
+        <nacionalidad>Mexicana</nacionalidad>
+        <generoArtista>Balada</generoArtista>
+      </artista>
+      <album>El Triste</album>
+      <genero tipo="Balada">Balada</genero>
+      <duracion>3:42</duracion>
+      <anio>1970</anio>
+      <idioma codigo="es">Español</idioma>
+      <calificacion estrellas="5">5</calificacion>
+      <favorita>true</favorita>
+    </cancion>
+
+    <cancion id="c002" estado="activa">
+      <titulo>La Incondicional</titulo>
+      <artista id="a002">
+        <nombre>Luis Miguel</nombre>
+        <nacionalidad>Mexicana</nacionalidad>
+        <generoArtista>Balada</generoArtista>
+      </artista>
+      <album>Será que no me amas</album>
+      <genero tipo="Balada">Balada</genero>
+      <duracion>4:10</duracion>
+      <anio>1989</anio>
+      <idioma codigo="es">Español</idioma>
+      <calificacion estrellas="5">5</calificacion>
+      <favorita>true</favorita>
+    </cancion>
+
+    <cancion id="c003" estado="activa">
+      <titulo>Tan Enamorados</titulo>
+      <artista id="a003">
+        <nombre>Ricardo Montaner</nombre>
+        <nacionalidad>Venezolana</nacionalidad>
+        <generoArtista>Balada</generoArtista>
+      </artista>
+      <album>Tan Enamorados</album>
+      <genero tipo="Balada">Balada</genero>
+      <duracion>4:05</duracion>
+      <anio>1992</anio>
+      <idioma codigo="es">Español</idioma>
+      <calificacion estrellas="4">4</calificacion>
+      <favorita>false</favorita>
+    </cancion>
+
+    <!-- SALSA -->
+    <cancion id="c004" estado="activa">
+      <titulo>Llorarás</titulo>
+      <artista id="a004">
+        <nombre>Oscar D'León</nombre>
+        <nacionalidad>Venezolana</nacionalidad>
+        <generoArtista>Salsa</generoArtista>
+      </artista>
+      <album>Llorarás</album>
+      <genero tipo="Salsa">Salsa</genero>
+      <duracion>4:20</duracion>
+      <anio>1981</anio>
+      <idioma codigo="es">Español</idioma>
+      <calificacion estrellas="5">5</calificacion>
+      <favorita>true</favorita>
+    </cancion>
+
+    <cancion id="c005" estado="activa">
+      <titulo>Devórame Otra Vez</titulo>
+      <artista id="a005">
+        <nombre>Lalo Rodríguez</nombre>
+        <nacionalidad>Puertorriqueña</nacionalidad>
+        <generoArtista>Salsa</generoArtista>
+      </artista>
+      <album>Devórame Otra Vez</album>
+      <genero tipo="Salsa">Salsa</genero>
+      <duracion>5:10</duracion>
+      <anio>1988</anio>
+      <idioma codigo="es">Español</idioma>
+      <calificacion estrellas="5">5</calificacion>
+      <favorita>true</favorita>
+    </cancion>
+
+    <cancion id="c006" estado="activa">
+      <titulo>La Noche Más Linda</titulo>
+      <artista id="a006">
+        <nombre>Eddie Santiago</nombre>
+        <nacionalidad>Puertorriqueña</nacionalidad>
+        <generoArtista>Salsa</generoArtista>
+      </artista>
+      <album>Sigo Atreviéndome</album>
+      <genero tipo="Salsa">Salsa</genero>
+      <duracion>4:35</duracion>
+      <anio>1989</anio>
+      <idioma codigo="es">Español</idioma>
+      <calificacion estrellas="4">4</calificacion>
+      <favorita>false</favorita>
+    </cancion>
+
+    <!-- CUMBIA -->
+    <cancion id="c007" estado="activa">
+      <titulo>Perfume de Gardenia</titulo>
+      <artista id="a007">
+        <nombre>La Sonora Santanera</nombre>
+        <nacionalidad>Mexicana</nacionalidad>
+        <generoArtista>Cumbia</generoArtista>
+      </artista>
+      <album>Perfume de Gardenia</album>
+      <genero tipo="Cumbia">Cumbia</genero>
+      <duracion>3:30</duracion>
+      <anio>1962</anio>
+      <idioma codigo="es">Español</idioma>
+      <calificacion estrellas="4">4</calificacion>
+      <favorita>false</favorita>
+    </cancion>
+
+    <cancion id="c008" estado="activa">
+      <titulo>Los Luchadores</titulo>
+      <artista id="a007">
+        <nombre>La Sonora Santanera</nombre>
+        <nacionalidad>Mexicana</nacionalidad>
+        <generoArtista>Cumbia</generoArtista>
+      </artista>
+      <album>Éxitos de La Sonora</album>
+      <genero tipo="Cumbia">Cumbia</genero>
+      <duracion>3:15</duracion>
+      <anio>1965</anio>
+      <idioma codigo="es">Español</idioma>
+      <calificacion estrellas="4">4</calificacion>
+      <favorita>false</favorita>
+    </cancion>
+
+    <cancion id="c009" estado="activa">
+      <titulo>Yo Soy Tu Maestro</titulo>
+      <artista id="a009">
+        <nombre>Los Télez</nombre>
+        <nacionalidad>Mexicana</nacionalidad>
+        <generoArtista>Cumbia</generoArtista>
+      </artista>
+      <album>Yo Soy Tu Maestro</album>
+      <genero tipo="Cumbia">Cumbia</genero>
+      <duracion>3:50</duracion>
+      <anio>1995</anio>
+      <idioma codigo="es">Español</idioma>
+      <calificacion estrellas="3">3</calificacion>
+      <favorita>false</favorita>
+    </cancion>
+
+    <!-- VIDEOJUEGOS -->
+    <cancion id="c010" estado="activa">
+      <titulo>Gusty Garden Galaxy</titulo>
+      <artista id="a010">
+        <nombre>Koji Kondo</nombre>
+        <nacionalidad>Japonesa</nacionalidad>
+        <generoArtista>Videojuegos</generoArtista>
+      </artista>
+      <album>Super Mario Galaxy OST</album>
+      <genero tipo="Videojuegos">Videojuegos</genero>
+      <duracion>3:22</duracion>
+      <anio>2007</anio>
+      <idioma codigo="en">Inglés</idioma>
+      <calificacion estrellas="5">5</calificacion>
+      <favorita>true</favorita>
+    </cancion>
+
+    <cancion id="c011" estado="activa">
+      <titulo>Megalovania</titulo>
+      <artista id="a011">
+        <nombre>Toby Fox</nombre>
+        <nacionalidad>Estadounidense</nacionalidad>
+        <generoArtista>Videojuegos</generoArtista>
+      </artista>
+      <album>Undertale OST</album>
+      <genero tipo="Videojuegos">Videojuegos</genero>
+      <duracion>2:37</duracion>
+      <anio>2015</anio>
+      <idioma codigo="en">Inglés</idioma>
+      <calificacion estrellas="5">5</calificacion>
+      <favorita>true</favorita>
+    </cancion>
+
+    <cancion id="c012" estado="activa">
+      <titulo>Canción de Pou</titulo>
+      <artista id="a012">
+        <nombre>Desconocido</nombre>
+        <nacionalidad>Otra</nacionalidad>
+        <generoArtista>Videojuegos</generoArtista>
+      </artista>
+      <album>Pou OST</album>
+      <genero tipo="Videojuegos">Videojuegos</genero>
+      <duracion>60:00</duracion>
+      <anio>2012</anio>
+      <idioma codigo="en">Inglés</idioma>
+      <calificacion estrellas="5">5</calificacion>
+      <favorita>true</favorita>
+      <notas>1 hora de pura cultura</notas>
+    </cancion>
+
+    <!-- BANDA -->
+    <cancion id="c013" estado="activa">
+      <titulo>Tu Perfume</titulo>
+      <artista id="a013">
+        <nombre>Banda MS</nombre>
+        <nacionalidad>Mexicana</nacionalidad>
+        <generoArtista>Banda</generoArtista>
+      </artista>
+      <album>Tu Perfume</album>
+      <genero tipo="Banda">Banda</genero>
+      <duracion>3:48</duracion>
+      <anio>2014</anio>
+      <idioma codigo="es">Español</idioma>
+      <calificacion estrellas="4">4</calificacion>
+      <favorita>false</favorita>
+    </cancion>
+
+    <cancion id="c014" estado="activa">
+      <titulo>Disponible Para Ti</titulo>
+      <artista id="a014">
+        <nombre>Banda El Recodo</nombre>
+        <nacionalidad>Mexicana</nacionalidad>
+        <generoArtista>Banda</generoArtista>
+      </artista>
+      <album>Disponible Para Ti</album>
+      <genero tipo="Banda">Banda</genero>
+      <duracion>3:55</duracion>
+      <anio>2010</anio>
+      <idioma codigo="es">Español</idioma>
+      <calificacion estrellas="3">3</calificacion>
+      <favorita>false</favorita>
+    </cancion>
+
+    <cancion id="c015" estado="activa">
+      <titulo>Me Vas a Extrañar</titulo>
+      <artista id="a013">
+        <nombre>Banda MS</nombre>
+        <nacionalidad>Mexicana</nacionalidad>
+        <generoArtista>Banda</generoArtista>
+      </artista>
+      <album>Me Vas a Extrañar</album>
+      <genero tipo="Banda">Banda</genero>
+      <duracion>4:10</duracion>
+      <anio>2013</anio>
+      <idioma codigo="es">Español</idioma>
+      <calificacion estrellas="4">4</calificacion>
+      <favorita>false</favorita>
+    </cancion>
+
+    <!-- ROCK -->
+    <cancion id="c016" estado="activa">
+      <titulo>I Was Made for Lovin' You</titulo>
+      <artista id="a016">
+        <nombre>KISS</nombre>
+        <nacionalidad>Estadounidense</nacionalidad>
+        <generoArtista>Rock</generoArtista>
+      </artista>
+      <album>Dynasty</album>
+      <genero tipo="Rock">Rock</genero>
+      <duracion>4:32</duracion>
+      <anio>1979</anio>
+      <idioma codigo="en">Inglés</idioma>
+      <calificacion estrellas="5">5</calificacion>
+      <favorita>true</favorita>
+    </cancion>
+
+    <cancion id="c017" estado="activa">
+      <titulo>Love In Itself</titulo>
+      <artista id="a017">
+        <nombre>Depeche Mode</nombre>
+        <nacionalidad>Británica</nacionalidad>
+        <generoArtista>Rock</generoArtista>
+      </artista>
+      <album>Construction Time Again</album>
+      <genero tipo="Rock">Rock</genero>
+      <duracion>5:50</duracion>
+      <anio>1983</anio>
+      <idioma codigo="en">Inglés</idioma>
+      <calificacion estrellas="4">4</calificacion>
+      <favorita>false</favorita>
+    </cancion>
+
+    <cancion id="c018" estado="activa">
+      <titulo>Numb</titulo>
+      <artista id="a018">
+        <nombre>Linkin Park</nombre>
+        <nacionalidad>Estadounidense</nacionalidad>
+        <generoArtista>Rock</generoArtista>
+      </artista>
+      <album>Meteora</album>
+      <genero tipo="Rock">Rock</genero>
+      <duracion>3:05</duracion>
+      <anio>2003</anio>
+      <idioma codigo="en">Inglés</idioma>
+      <calificacion estrellas="5">5</calificacion>
+      <favorita>true</favorita>
+    </cancion>
+
+    <!-- BOLERO -->
+    <cancion id="c019" estado="activa">
+      <titulo>Me Odio</titulo>
+      <artista id="a019">
+        <nombre>Los Tres Caballeros</nombre>
+        <nacionalidad>Mexicana</nacionalidad>
+        <generoArtista>Bolero</generoArtista>
+      </artista>
+      <album>Me Odio</album>
+      <genero tipo="Bolero">Bolero</genero>
+      <duracion>3:10</duracion>
+      <anio>1958</anio>
+      <idioma codigo="es">Español</idioma>
+      <calificacion estrellas="5">5</calificacion>
+      <favorita>true</favorita>
+    </cancion>
+
+    <cancion id="c020" estado="activa">
+      <titulo>Contigo</titulo>
+      <artista id="a020">
+        <nombre>Trio Los Panchos</nombre>
+        <nacionalidad>Mexicana</nacionalidad>
+        <generoArtista>Bolero</generoArtista>
+      </artista>
+      <album>Contigo</album>
+      <genero tipo="Bolero">Bolero</genero>
+      <duracion>3:05</duracion>
+      <anio>1955</anio>
+      <idioma codigo="es">Español</idioma>
+      <calificacion estrellas="5">5</calificacion>
+      <favorita>true</favorita>
+    </cancion>
+
+    <cancion id="c021" estado="activa">
+      <titulo>Cuando Dos Almas</titulo>
+      <artista id="a021">
+        <nombre>Pedro Vargas</nombre>
+        <nacionalidad>Mexicana</nacionalidad>
+        <generoArtista>Bolero</generoArtista>
+      </artista>
+      <album>Cuando Dos Almas</album>
+      <genero tipo="Bolero">Bolero</genero>
+      <duracion>3:20</duracion>
+      <anio>1952</anio>
+      <idioma codigo="es">Español</idioma>
+      <calificacion estrellas="4">4</calificacion>
+      <favorita>false</favorita>
+    </cancion>
+
+    <!-- POP LATINO -->
+    <cancion id="c022" estado="activa">
+      <titulo>Me Dejas Caer</titulo>
+      <artista id="a022">
+        <nombre>Camilo Séptimo</nombre>
+        <nacionalidad>Mexicana</nacionalidad>
+        <generoArtista>PopLatino</generoArtista>
+      </artista>
+      <album>Camilo Séptimo</album>
+      <genero tipo="PopLatino">Pop Latino</genero>
+      <duracion>3:52</duracion>
+      <anio>2007</anio>
+      <idioma codigo="es">Español</idioma>
+      <calificacion estrellas="4">4</calificacion>
+      <favorita>false</favorita>
+    </cancion>
+
+    <cancion id="c023" estado="activa">
+      <titulo>Antología</titulo>
+      <artista id="a023">
+        <nombre>Shakira</nombre>
+        <nacionalidad>Colombiana</nacionalidad>
+        <generoArtista>PopLatino</generoArtista>
+      </artista>
+      <album>Pies Descalzos</album>
+      <genero tipo="PopLatino">Pop Latino</genero>
+      <duracion>4:25</duracion>
+      <anio>1995</anio>
+      <idioma codigo="es">Español</idioma>
+      <calificacion estrellas="5">5</calificacion>
+      <favorita>true</favorita>
+    </cancion>
+
+    <cancion id="c024" estado="activa">
+      <titulo>Doy un Paso Atrás</titulo>
+      <artista id="a024">
+        <nombre>Samo</nombre>
+        <nacionalidad>Mexicana</nacionalidad>
+        <generoArtista>PopLatino</generoArtista>
+      </artista>
+      <album>Samo</album>
+      <genero tipo="PopLatino">Pop Latino</genero>
+      <duracion>3:40</duracion>
+      <anio>2010</anio>
+      <idioma codigo="es">Español</idioma>
+      <calificacion estrellas="4">4</calificacion>
+      <favorita>false</favorita>
+    </cancion>
+
+  </canciones>
+
+  <!-- PLAYLISTS -->
+  <playlists>
+
+    <playlist id="p001" publica="no">
+      <nombrePlaylist>Mis Favoritas</nombrePlaylist>
+      <descripcion>Las canciones que más me gustan</descripcion>
+      <items>
+        <item refCancion="c001" orden="1">c001</item>
+        <item refCancion="c002" orden="2">c002</item>
+        <item refCancion="c004" orden="3">c004</item>
+        <item refCancion="c005" orden="4">c005</item>
+        <item refCancion="c010" orden="5">c010</item>
+        <item refCancion="c016" orden="6">c016</item>
+      </items>
+    </playlist>
+
+    <playlist id="p002" publica="no">
+      <nombrePlaylist>Clásicos Mexicanos</nombrePlaylist>
+      <descripcion>Lo mejor de la música mexicana de todos los tiempos</descripcion>
+      <items>
+        <item refCancion="c001" orden="1">c001</item>
+        <item refCancion="c007" orden="2">c007</item>
+        <item refCancion="c019" orden="3">c019</item>
+        <item refCancion="c020" orden="4">c020</item>
+      </items>
+    </playlist>
+
+    <playlist id="p003" publica="no">
+      <nombrePlaylist>Para Bailar</nombrePlaylist>
+      <descripcion>Ritmos salseros y cumbiones</descripcion>
+      <items>
+        <item refCancion="c004" orden="1">c004</item>
+        <item refCancion="c005" orden="2">c005</item>
+        <item refCancion="c006" orden="3">c006</item>
+        <item refCancion="c007" orden="4">c007</item>
+        <item refCancion="c009" orden="5">c009</item>
+      </items>
+    </playlist>
+
+  </playlists>
+
+</biblioteca>

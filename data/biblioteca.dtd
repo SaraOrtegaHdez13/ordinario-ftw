@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT biblioteca (canciones, playlists)>
+
+<!-- Atributo para el elemento biblioteca -->
+<!ATTLIST biblioteca
+  version  CDATA  #REQUIRED>
+
+<!ELEMENT canciones (cancion+)>
+
+<!-- Lo que debe de tener cada canción -->
+<!ELEMENT cancion (titulo, artista, album, genero, duracion, anio, idioma, calificacion, favorita, portada?, letra?, notas?)>
+
+<!-- A fuerza debe ir el ID, porque con eso se identificar+a cada 
+canción para cuando la queramos poner en una playlist-->
+<!ATTLIST cancion
+  id      ID      #REQUIRED
+  estado  (activa | archivada) "activa">
+
+<!ELEMENT titulo      (#PCDATA)>
+<!ELEMENT album       (#PCDATA)>
+<!ELEMENT duracion    (#PCDATA)>
+<!ELEMENT anio        (#PCDATA)>
+<!ELEMENT favorita    (#PCDATA)>
+<!ELEMENT portada     (#PCDATA)>
+<!ELEMENT letra       (#PCDATA)>
+<!ELEMENT notas       (#PCDATA)>
+
+<!ELEMENT calificacion (#PCDATA)>
+<!ATTLIST calificacion
+  estrellas (1 | 2 | 3 | 4 | 5) #REQUIRED>
+
+<!ELEMENT idioma (#PCDATA)>
+<!ATTLIST idioma
+  codigo (es | en) #REQUIRED>
+
+<!ELEMENT genero (#PCDATA)>
+<!ATTLIST genero
+  tipo (Balada | Salsa | Cumbia | Videojuegos | PopLatino | Banda | Rock | Bolero | Otro) #REQUIRED>
+
+<!ELEMENT artista (nombre, nacionalidad, generoArtista)>
+<!ATTLIST artista
+  id CDATA #IMPLIED>
+
+<!ELEMENT nombre          (#PCDATA)>
+<!ELEMENT nacionalidad    (#PCDATA)>
+<!ELEMENT generoArtista   (#PCDATA)>
+
+
+<!-- 2da parte, la de las playlist -->
+<!ELEMENT playlists (playlist+)>
+
+<!ELEMENT playlist (nombrePlaylist, descripcion?, items)>
+<!ATTLIST playlist
+  id       ID     #REQUIRED
+  publica  (si | no) "no">
+
+<!ELEMENT nombrePlaylist  (#PCDATA)>
+<!ELEMENT descripcion     (#PCDATA)>
+
+<!ELEMENT items (item+)>
+<!ELEMENT item  (#PCDATA)>
+
+<!-- IDREF es para que el ID que lleve sea existente, que de verdad sea sobre una
+canción que ya exista-->
+<!ATTLIST item
+  refCancion IDREF #REQUIRED
+  orden      CDATA #REQUIRED>

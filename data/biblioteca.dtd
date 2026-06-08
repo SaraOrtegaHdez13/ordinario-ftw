@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!ELEMENT biblioteca (canciones, playlists, usuarios)>
+<!ELEMENT biblioteca (canciones, playlists)>
 
 <!-- Atributo para el elemento biblioteca -->
 <!ATTLIST biblioteca

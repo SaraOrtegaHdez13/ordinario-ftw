@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE usuarios SYSTEM "usuarios.dtd">
+
+<usuarios>
+
+  <usuario id="u001" rol="admin">
+    <nombreUsuario>adminSofia</nombreUsuario>
+    <password>admin123</password>
+    <nombreCompleto>Sofía Camila Guzmán Hernández</nombreCompleto>
+  </usuario>
+
+  <usuario id="u002" rol="lector">
+    <nombreUsuario>bolitadearroz</nombreUsuario>
+    <password>1234</password>
+    <nombreCompleto>Sara Ortega Hernández</nombreCompleto>
+  </usuario>
+
+  <usuario id="u003" rol="lector">
+    <nombreUsuario>invitado</nombreUsuario>
+    <password>invitado</password>
+    <nombreCompleto>Usuario Invitado</nombreCompleto>
+  </usuario>
+
+</usuarios>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Puede existir más de un usuario -->
+<!ELEMENT usuarios (usuario+)>
+
+<!ELEMENT usuario (nombreUsuario, password, nombreCompleto?)>
+
+<!-- Por default el rol es lector -->
+<!ATTLIST usuario
+  id   ID                  #REQUIRED
+  rol  (admin | lector)    "lector"> 
+
+<!ELEMENT nombreUsuario  (#PCDATA)>
+<!ELEMENT password       (#PCDATA)>
+<!ELEMENT nombreCompleto (#PCDATA)>

@@ -1,164 +1,70 @@
-/* ═══════════════════════════════════════════════════════════════
-   CLONSPOTIFY — Hoja de estilos global
-   ═══════════════════════════════════════════════════════════════
-
-   ESTRUCTURA GENERAL DEL ARCHIVO (en orden):
-   ─────────────────────────────────────────────────────────────
-    1.  Importación de fuentes (Google Fonts)
-    2.  Reset universal y variables CSS (tokens de diseño)
-    3.  Accesibilidad (focus, sr-only, skip-link)
-    4.  Barra de navegación (nav, logo, links, hamburguesa)
-    5.  Layout base (main, section, encabezados de página)
-    6.  Botones (primary, secondary, small, ghost)
-    7.  Paneles (contenedores con borde y fondo)
-    8.  Hero (sección principal del index)
-    9.  Stats grid (tarjetas de estadística resumida)
-   10.  Song list (lista de canciones con ícono y metadatos)
-   11.  Genre bars (barras de distribución por género)
-   12.  Filtros (buscador + select de filtro)
-   13.  Tabla del catálogo (tabla con ordenamiento)
-   14.  Cards favoritas (rejilla de portadas)
-   15.  Playlists (tarjetas de playlist con lista de canciones)
-   16.  Estadísticas detalladas
-   17.  Formularios (inputs, selects, estrellas, checkboxes)
-   18.  Login
-   19.  Alertas (éxito y error)
-   20.  Modal (overlay + panel flotante)
-   21.  Footer
-   22.  Enlace "Ver todo"
-   23.  Utilidades (clases de uso rápido)
-   24.  Animaciones (@keyframes)
-   25.  Media queries (responsive)
-   26.  Modo alto contraste y reduce-motion (accesibilidad)
-   27.  Utilidades adicionales y secciones secundarias
-
-   FUENTES USADAS:
-   ─────────────────────────────────────────────────────────────
-   • Syne      → títulos y encabezados (display)
-   • DM Sans   → cuerpo de texto y UI (legibilidad)
-
-   PALETA DE COLOR:
-   ─────────────────────────────────────────────────────────────
-   El tema es oscuro, con fondos en tonos púrpura-negro y acentos
-   en morado, cian, rosa y verde. Todas las decisiones de color
-   se centralizan en las variables de :root para mantener
-   consistencia y facilitar futuros cambios de tema.
-   ═══════════════════════════════════════════════════════════════ */
-
-
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 1 — IMPORTACIÓN DE FUENTES
-   Google Fonts se carga de forma externa. El parámetro
-   `display=swap` evita el FOIT (Flash of Invisible Text):
-   muestra la fuente del sistema mientras carga la web.
-   ══════════════════════════════════════════════════════════ */
+/* 
+   Estilos globales
+   Fuentes: Syne (títulos) + DM Sans (cuerpo)
+*/
 
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 2 — RESET UNIVERSAL Y VARIABLES CSS
-   ══════════════════════════════════════════════════════════ */
+/* RESET & VARIABLES */
 
-/*
- * Reset de caja universal
- * -----------------------
- * box-sizing: border-box → el padding y border se incluyen
- * DENTRO del ancho/alto declarado, no se suman por fuera.
- * Esto evita el comportamiento confuso del modelo de caja
- * estándar (content-box) donde padding desborda el ancho.
- *
- * margin: 0 / padding: 0 → elimina los márgenes y rellenos
- * predeterminados del navegador (que varían entre Chrome,
- * Firefox, Safari), para partir de una base uniforme.
- *
- * El selector `*, *::before, *::after` aplica a TODOS los
- * elementos y sus pseudo-elementos.
- */
+/* Elimina márgenes y padding por defecto del navegador */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 /*
- * Variables CSS (Custom Properties)
- * ----------------------------------
- * Definidas en :root para que sean accesibles globalmente.
- * Usar variables tiene tres ventajas clave:
- *   1. Consistencia: todos los componentes usan los mismos tokens
- *   2. Mantenimiento: cambiar un color en un solo lugar actualiza toda la app
- *   3. Temas: en el futuro se puede crear un tema claro sobreescribiendo :root
+ * Variables globales — se usan en todo el CSS con var(--nombre)
+ * Cambiar un valor aquí lo actualiza en toda la app.
  *
- * NOMENCLATURA DE VARIABLES:
- *   --bg*      → fondos (bg = background)
- *   --border*  → colores de bordes (* -h = hover)
- *   --purple*  → escala de morado principal (* -d = dark, -l = light)
- *   --text*    → jerarquía de texto (text=principal, text2=secundario, text3=tenue)
- *   --radius*  → radios de borde (* -sm = small, -xs = extra small)
- *   --font-*   → familias tipográficas
- *   --ease     → curva de animación personalizada (cubic-bezier)
- *   --transition → shorthand de duración + curva para transiciones
- *   --nav-h    → altura fija del nav (se reutiliza en posicionamiento)
+ * bg  = background
+ * -h  = hover
+ * -d  = dark, -l = light
  */
 :root {
-  /* ── Fondos (de más oscuro a más claro) ── */
-  --bg:         #0d0b17;  /* Fondo base de la página (casi negro con tinte morado) */
-  --bg2:        #161228;  /* Fondo secundario: modals, nav desplegado en móvil */
-  --bg3:        #1e193a;  /* Fondo terciario: inputs, miniaturas, hover de filas */
-  --card:       #1a1630;  /* Fondo de tarjetas y paneles */
-  --card-hover: #201c38;  /* Fondo de tarjeta en estado hover */
+  /* Fondos */
+  --bg:        #0d0b17;
+  --bg2:       #161228;
+  --bg3:       #1e193a;
+  --card:      #1a1630;
+  --card-hover:#201c38;
 
-  /* ── Bordes ── */
-  --border:     rgba(160,120,255,0.14);  /* Borde normal: sutil, translúcido */
-  --border-h:   rgba(160,120,255,0.4);   /* Borde en hover: más visible */
+  /* Bordes */
+  --border:    rgba(160,120,255,0.14);
+  --border-h:  rgba(160,120,255,0.4);
 
-  /* ── Colores de acento ── */
-  --purple:   #a855f7;  /* Morado principal: botones, iconos activos, títulos */
-  --purple-d: #7c3aed;  /* Morado oscuro: hover de botón primario */
-  --purple-l: #c084fc;  /* Morado claro: gradientes, badges, barras */
-  --cyan:     #22d3ee;  /* Cian: badges de playlists públicas */
-  --pink:     #ec4899;  /* Rosa: favs, alertas de error */
-  --green:    #34d399;  /* Verde: alertas de éxito */
-  --amber:    #fbbf24;  /* Ámbar: estrellas de calificación */
+  /* Colores de acento */
+  --purple:    #a855f7;
+  --purple-d:  #7c3aed;
+  --purple-l:  #c084fc;
+  --cyan:      #22d3ee;
+  --pink:      #ec4899;
+  --green:     #34d399;
+  --amber:     #fbbf24;
 
-  /* ── Escala de texto (jerarquía visual) ── */
-  --text:  #ede9ff;  /* Texto principal: legible sobre fondos oscuros */
-  --text2: #a89cc8;  /* Texto secundario: metadatos, labels */
-  --text3: #6b5f8a;  /* Texto tenue: números de fila, placeholders */
+  /* Texto (principal → secundario → tenue) */
+  --text:      #ede9ff;
+  --text2:     #a89cc8;
+  --text3:     #6b5f8a;
 
-  /* ── Radios de borde ── */
-  --radius:    14px;  /* Radio estándar: cards, paneles, modals */
-  --radius-sm:  8px;  /* Radio pequeño: botones, inputs, badges */
-  --radius-xs:  5px;  /* Radio mínimo: outlines de focus */
+  /* Bordes redondeados */
+  --radius:    14px;
+  --radius-sm: 8px;
+  --radius-xs: 5px;
 
-  /* ── Tipografía ── */
-  --font-head: 'Syne', sans-serif;     /* Títulos: geométrico, de impacto */
-  --font-body: 'DM Sans', sans-serif;  /* Cuerpo: humanista, muy legible */
+  /* Tipografía */
+  --font-head: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
 
-  /* ── Animación ── */
-  --ease:       cubic-bezier(0.4, 0, 0.2, 1);  /* Curva estilo Material Design */
-  --transition: 0.22s var(--ease);              /* Duración + curva lista para usar */
+  /* Animaciones */
+  --ease:       cubic-bezier(0.4,0,0.2,1);
+  --transition: 0.22s var(--ease);
 
-  /* ── Medidas de layout ── */
-  --nav-h: 62px;  /* Altura del nav; usada en position:sticky y en menú móvil */
+  /* Altura del nav, se reutiliza en varias partes */
+  --nav-h: 62px;
 }
 
-/*
- * Scroll suave
- * Hace que los saltos a anclas (#sección) sean animados en
- * lugar de instantáneos, mejorando la experiencia de usuario.
- */
+/* Scroll suave al navegar por anclas */
 html { scroll-behavior: smooth; }
 
-/*
- * Estilos base del cuerpo
- * -----------------------
- * background     → color de fondo global de la página
- * color          → color de texto predeterminado (heredado por hijos)
- * font-family    → tipografía base (DM Sans)
- * font-size      → 15px como base (ligeramente menor que los 16px del navegador)
- * line-height    → 1.6 mejora legibilidad en párrafos largos
- * min-height     → garantiza que el fondo cubra toda la ventana aunque el
- *                  contenido sea corto
- * font-smoothing → activa antialiasing en macOS/iOS para texto más nítido
- */
 body {
   background: var(--bg);
   color: var(--text);
@@ -169,101 +75,41 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/*
- * Scrollbar personalizada (solo Webkit: Chrome, Safari, Edge)
- * Firefox tiene su propia API (scrollbar-color/width) que
- * aquí no se implementa por complejidad.
- */
-::-webkit-scrollbar       { width: 6px; }                      /* Ancho de la barra */
-::-webkit-scrollbar-track { background: var(--bg2); }          /* Pista de fondo */
-::-webkit-scrollbar-thumb { background: var(--border-h); border-radius: 99px; } /* Manija */
+/* Scrollbar personalizada (solo Chrome/Safari) */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border-h); border-radius: 99px; }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 3 — ACCESIBILIDAD
-   Estilos que mejoran la experiencia de usuarios con
-   discapacidades visuales o que navegan con teclado.
-   ══════════════════════════════════════════════════════════ */
+/* ACCESIBILIDAD */
 
-/*
- * :focus-visible
- * Muestra el anillo de foco SOLO cuando el elemento recibe
- * foco por teclado (Tab), NO cuando se hace clic.
- * Esto evita el molesto contorno azul al hacer clic en botones,
- * pero lo mantiene visible para usuarios de teclado.
- */
+/* Muestra el anillo de foco solo al navegar con teclado */
 :focus-visible {
   outline: 2px solid var(--purple);
   outline-offset: 3px;
   border-radius: var(--radius-xs);
 }
 
-/*
- * .sr-only (Screen Reader Only)
- * Oculta el elemento visualmente pero lo mantiene en el DOM
- * y accesible para lectores de pantalla.
- *
- * Técnica estándar de accesibilidad web (WCAG).
- * No usar display:none ni visibility:hidden porque esos
- * también lo ocultan de los lectores de pantalla.
- *
- * Se usa para: etiquetas de botones con solo icono, descripciones
- * de tablas, instrucciones de formulario, etc.
- */
-.sr-only {
-  position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);  /* Recorta el área visible a 0 */
-  white-space: nowrap;  /* Evita que el texto salte de línea */
-  border: 0;
-}
-
-/*
- * .skip-link (Saltar al contenido)
- * Enlace oculto que aparece al recibir foco con Tab.
- * Permite a usuarios de teclado saltar la navegación e
- * ir directamente al contenido principal.
- *
- * WCAG 2.4.1 requiere este tipo de enlace.
- * Normalmente es el primer elemento del HTML (<body>).
- */
+/* Enlace para saltar al contenido, aparece al presionar Tab */
 .skip-link {
   position: absolute;
-  top: -100px;              /* Oculto fuera de pantalla por defecto */
+  top: -100px;
   left: 1rem;
   background: var(--purple);
   color: #fff;
   padding: 0.5rem 1.2rem;
   border-radius: var(--radius-sm);
   font-weight: 600;
-  z-index: 9999;            /* Encima de todo, incluyendo el nav */
+  z-index: 9999;
   transition: top 0.2s;
   text-decoration: none;
 }
-/* Al recibir foco, "salta" a posición visible */
+
 .skip-link:focus { top: 1rem; }
 
+/*  NAV  */
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 4 — BARRA DE NAVEGACIÓN
-   Sticky en la parte superior, semitransparente con blur.
-   ══════════════════════════════════════════════════════════ */
-
-/*
- * nav (contenedor principal)
- * --------------------------
- * position: sticky + top:0 → el nav se queda pegado al tope
- *   mientras se hace scroll; ocupa espacio en el layout
- *   (a diferencia de position:fixed que lo saca del flujo).
- *
- * backdrop-filter: blur → efecto de vidrio esmerilado sobre
- *   el contenido que queda detrás del nav al hacer scroll.
- *   Requiere que background tenga algo de transparencia (rgba).
- *
- * border-bottom → línea sutil que separa el nav del contenido.
- */
+/* Se queda pegado arriba al hacer scroll, con efecto de vidrio */
 nav {
   position: sticky;
   top: 0;
@@ -273,16 +119,12 @@ nav {
   justify-content: space-between;
   padding: 0 2.5rem;
   height: var(--nav-h);
-  background: rgba(13,11,23,0.88);     /* bg casi opaco con poca transparencia */
-  backdrop-filter: blur(18px);         /* Desenfoque del contenido detrás */
+  background: rgba(13, 11, 23, 0.88);
+  backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--border);
 }
 
-/*
- * .nav-brand (logo + nombre)
- * Usa display:flex para alinear horizontalmente la imagen
- * del logo con el texto "Clonspotify".
- */
+/* Logo + nombre "Clonspotify" */
 .nav-brand {
   display: flex;
   align-items: center;
@@ -292,35 +134,23 @@ nav {
   font-weight: 800;
   color: var(--text);
   text-decoration: none;
-  letter-spacing: -0.01em;  /* Tracking ligeramente apretado para títulos grandes */
+  letter-spacing: -0.01em;
 }
 .nav-brand:hover { color: var(--purple-l); }
 
-/*
- * .brand-logo — imagen del logo en el nav
- * object-fit:contain preserva las proporciones sin recortar
- */
 .brand-logo {
   width: 32px;
   height: 32px;
   object-fit: contain;
 }
 
-/*
- * .nav-links — lista horizontal de enlaces
- * list-style:none elimina las viñetas del <ul>
- */
+/* Lista de enlaces del nav */
 .nav-links {
   display: flex;
   list-style: none;
   gap: 0.2rem;
 }
 
-/*
- * .nav-links a — cada enlace individual
- * El padding generoso crea un área de clic cómoda (mínimo 44×44px recomendado por WCAG).
- * La transición suave evita cambios bruscos al hacer hover.
- */
 .nav-links a {
   display: flex;
   align-items: center;
@@ -335,28 +165,20 @@ nav {
   transition: color var(--transition), background var(--transition);
 }
 .nav-links a:hover  { color: var(--text); background: var(--bg3); }
-/* .active → aplicado por JS (marcarNavActivo) a la página actual */
+/* .active lo agrega JS según la página actual */
 .nav-links a.active { color: var(--purple); background: rgba(168,85,247,0.12); }
 
-/*
- * .nav-icon — íconos SVG en los enlaces del nav
- * El filter convierte el SVG a blanco puro, independientemente
- * del color original del archivo. Técnica estándar para
- * íconos monocromáticos sobre fondos oscuros.
- */
+/* Íconos SVG del nav — el filter los convierte a blanco */
 .nav-icon {
   width: 20px;
   height: 20px;
   object-fit: contain;
-  filter: brightness(0) invert(1);  /* brightness(0) = negro, invert(1) = blanco */
+  filter: brightness(0) invert(1);
 }
 
-/*
- * .nav-toggle — botón hamburguesa (☰)
- * Se oculta en escritorio y aparece solo en móvil (@media).
- */
+/* Botón hamburguesa, solo visible en móvil */
 .nav-toggle {
-  display: none;         /* Oculto por defecto (escritorio) */
+  display: none;
   background: none;
   border: none;
   color: var(--text2);
@@ -365,60 +187,38 @@ nav {
   padding: 0.3rem;
 }
 
-/*
- * Responsive del nav en móvil (≤768px)
- * Los enlaces pasan de fila horizontal a columna vertical
- * y se ocultan hasta que se activan con la clase 'open'.
- */
+/* Nav en móvil: menú desplegable vertical */
 @media (max-width: 768px) {
-  nav { padding: 0 1.2rem; }  /* Menos padding lateral en pantallas chicas */
-
-  /* Muestra el botón hamburguesa */
+  nav { padding: 0 1.2rem; }
   .nav-toggle { display: block; }
-
   .nav-links {
-    display: none;                  /* Oculto por defecto */
-    position: absolute;             /* Sale del flujo; se superpone al contenido */
-    top: var(--nav-h);              /* Justo debajo del nav */
-    left: 0; right: 0;             /* Ancho completo de la pantalla */
+    display: none;
+    position: absolute;
+    top: var(--nav-h);
+    left: 0; right: 0;
     background: var(--bg2);
     border-bottom: 1px solid var(--border);
-    flex-direction: column;         /* Apila los enlaces verticalmente */
+    flex-direction: column;
     padding: 0.8rem;
     gap: 0.2rem;
   }
-  /* JS agrega/quita esta clase al hacer clic en la hamburguesa */
+  /* JS agrega esta clase al hacer clic en la hamburguesa */
   .nav-links.open { display: flex; }
 }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 5 — LAYOUT BASE
-   Define el contenedor principal y los elementos de
-   encabezado de página reutilizados en todas las vistas.
-   ══════════════════════════════════════════════════════════ */
+/* LAYOUT */
 
-/*
- * main — contenedor central del contenido
- * max-width + margin:auto → centra el contenido con ancho máximo de 1200px
- * padding-bottom grande (5rem) → espacio para que el footer no tape el contenido
- */
+/* Contenedor central con ancho máximo */
 main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 2rem 5rem;
 }
 
-/* Espaciado inferior entre secciones */
 section { margin-bottom: 3.5rem; }
 
-/*
- * .section-title — título de sección estándar
- * Usado como h2 en cada bloque de contenido.
- * font-family:head + font-weight:700 lo distingue visualmente del texto normal.
- * border-bottom → línea divisoria decorativa.
- * display:flex + gap → permite colocar un ícono emoji (.s-icon) antes del texto.
- */
+/* Título de sección con línea inferior */
 .section-title {
   font-family: var(--font-head);
   font-size: 1.45rem;
@@ -431,14 +231,9 @@ section { margin-bottom: 3.5rem; }
   align-items: center;
   gap: 0.7rem;
 }
-/* Ícono de sección (emoji o SVG pequeño) en color morado */
 .section-title .s-icon { color: var(--purple); }
 
-/*
- * .section-header — encabezado con título + botón en la misma línea
- * Usa justify-content:space-between para separar el título (izquierda)
- * del botón "Ver todas" (derecha).
- */
+/* Encabezado con título izquierda + botón derecha */
 .section-header {
   display: flex;
   align-items: center;
@@ -448,21 +243,14 @@ section { margin-bottom: 3.5rem; }
   border-bottom: 1px solid var(--border);
 }
 
-/*
- * .section-title-inline — variante del título para usar dentro de .section-header
- * Elimina el margen y borde propio porque el .section-header ya los tiene.
- */
+/* Variante del título para usar dentro de .section-header */
 .section-title-inline {
   margin-bottom: 0;
   border: none;
   padding: 0;
 }
 
-/*
- * .page-header — encabezado grande de páginas internas (h1 principal)
- * clamp(mínimo, fluido, máximo) hace el tamaño responsivo sin media queries.
- * El texto crece con el viewport entre 1.8rem y 2.8rem.
- */
+/* Encabezado grande de cada página (h1) */
 .page-header {
   padding: 2rem 0 1.5rem;
   margin-bottom: 0.5rem;
@@ -472,32 +260,19 @@ section { margin-bottom: 3.5rem; }
   font-size: clamp(1.8rem, 4vw, 2.8rem);
   font-weight: 800;
   color: var(--text);
-  line-height: 1.1;  /* Comprimido para títulos grandes multilinea */
+  line-height: 1.1;
 }
-/* .accent → parte del título en color morado (p.ej. "Clonspotify" en "Bienvenido a Clonspotify") */
-.page-header h1 .accent { color: var(--purple); }
-/* Subtítulo bajo el h1 */
-.page-header .subtitle { color: var(--text2); margin-top: 0.4rem; font-size: 0.95rem; }
+/* Parte del título en morado */
+.page-header h1 .accent  { color: var(--purple); }
+.page-header .subtitle   { color: var(--text2); margin-top: 0.4rem; font-size: 0.95rem; }
 
-/*
- * .two-col — layout de dos columnas iguales
- * Se colapsa a una sola columna en pantallas ≤700px.
- */
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;}
+/* Dos columnas iguales, colapsa a una en móvil */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
 @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 6 — BOTONES
-   Sistema de botones consistente con variantes para
-   diferentes jerarquías de acción.
-   ══════════════════════════════════════════════════════════ */
+/* BOTONES */
 
-/*
- * .btn — clase base para todos los botones
- * inline-flex permite alinear texto e ícono lado a lado.
- * line-height:1 evita que la tipografía agregue altura extra.
- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -509,35 +284,29 @@ section { margin-bottom: 3.5rem; }
   font-weight: 500;
   cursor: pointer;
   transition: all var(--transition);
-  text-decoration: none;  /* Para <a> usados como botones */
+  text-decoration: none;
   border: none;
   line-height: 1;
 }
 
-/* .btn-primary → acción principal (ej: "Guardar", "Agregar") */
+/* Botón principal */
 .btn-primary { background: var(--purple); color: #fff; }
-/* translateY(-1px) → micro-elevación en hover, simula que sube */
 .btn-primary:hover { background: var(--purple-d); transform: translateY(-1px); }
 
-/* .btn-secondary → acción secundaria con borde sutil */
+/* Botón secundario */
 .btn-secondary { background: var(--bg3); color: var(--text2); border: 1px solid var(--border); }
 .btn-secondary:hover { border-color: var(--border-h); color: var(--text); background: var(--card-hover); }
 
-/* .btn-sm → versión pequeña del botón (ej: en encabezados de sección) */
+/* Botón pequeño */
 .btn-sm { padding: 0.4rem 0.9rem; font-size: 0.82rem; }
 
-/* .btn-ghost → botón transparente solo con borde, acción terciaria */
+/* Botón fantasma (solo borde) */
 .btn-ghost { background: transparent; color: var(--text3); border: 1px solid var(--border); }
 .btn-ghost:hover { color: var(--purple); border-color: var(--purple); }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 7 — PANELES
-   Contenedores con fondo oscuro y borde sutil para agrupar
-   información relacionada visualmente.
-   ══════════════════════════════════════════════════════════ */
+/* PANELES */
 
-/* .panel — contenedor genérico */
 .panel {
   background: var(--card);
   border: 1px solid var(--border);
@@ -545,11 +314,7 @@ section { margin-bottom: 3.5rem; }
   padding: 1.5rem;
 }
 
-/*
- * .panel-title — etiqueta interna del panel
- * font-size pequeño + uppercase + letter-spacing = "eyebrow text"
- * (texto de categoría estilo editorial, muy común en UI de apps de música)
- */
+/* Etiqueta tipo "eyebrow" dentro del panel */
 .panel-title {
   font-family: var(--font-head);
   font-size: 0.76rem;
@@ -561,34 +326,23 @@ section { margin-bottom: 3.5rem; }
 }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 8 — HERO
-   Sección de bienvenida grande en la página principal (index).
-   ══════════════════════════════════════════════════════════ */
+/* INDEX  */
 
 .hero { padding: 2.5rem 0 1.5rem; margin-bottom: 0; }
 .hero h1 {
   font-family: var(--font-head);
-  font-size: clamp(2rem, 5vw, 3.2rem);  /* Responsivo: 2rem → 3.2rem */
+  font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 800;
   line-height: 1.1;
 }
-.hero h1 .accent { color: var(--purple); }  /* Parte del título en morado */
+.hero h1 .accent { color: var(--purple); }
 .hero .subtitle  { color: var(--text2); margin-top: 0.5rem; }
-/* .hero-ctas → fila de botones de llamada a la acción */
-.hero-ctas { display: flex; gap: 0.8rem; margin-top: 1.5rem; flex-wrap: wrap; }
+.hero-ctas       { display: flex; gap: 0.8rem; margin-top: 1.5rem; flex-wrap: wrap; }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 9 — STATS GRID
-   Rejilla de 4 tarjetas con métricas clave (total canciones,
-   artistas, playlists, duración).
-   ══════════════════════════════════════════════════════════ */
+/* STATS GRID  */
 
-/*
- * .stats-grid → 4 columnas en escritorio, 2 en móvil
- * repeat(4, 1fr) distribuye el espacio equitativamente entre 4 columnas
- */
+/* 4 columnas en escritorio, 2 en móvil */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -596,11 +350,6 @@ section { margin-bottom: 3.5rem; }
 }
 @media (max-width: 700px) { .stats-grid { grid-template-columns: repeat(2,1fr); } }
 
-/*
- * .stat-card → tarjeta individual de estadística
- * transform en hover → micro-elevación que simula "flotar"
- * border-color en hover → el borde se ilumina
- */
 .stat-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -610,10 +359,7 @@ section { margin-bottom: 3.5rem; }
 }
 .stat-card:hover { transform: translateY(-3px); border-color: var(--border-h); }
 
-/*
- * .stat-icon → ícono de la tarjeta de estadística
- * filter: brightness(0) invert(1) → convierte cualquier SVG a blanco
- */
+/* Ícono SVG de la tarjeta de estadística */
 .stat-icon {
   width: 2rem;
   height: 2rem;
@@ -622,14 +368,13 @@ section { margin-bottom: 3.5rem; }
   margin-bottom: 0.8rem;
 }
 
-/* .stat-label → etiqueta de la métrica (ej: "CANCIONES TOTALES") */
 .stat-label {
   font-size: 0.8rem;
   color: var(--text2);
   text-transform: uppercase;
   letter-spacing: 0.07em;
 }
-/* .stat-value → número grande de la métrica (ej: "247") */
+
 .stat-value {
   font-family: var(--font-head);
   font-size: 2.2rem;
@@ -640,22 +385,11 @@ section { margin-bottom: 3.5rem; }
 }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 10 — SONG LIST
-   Lista de canciones con número de fila, miniatura y metadatos.
-   Se usa en el panel de "Canciones recientes" del index
-   y en listas de resultados.
-   ══════════════════════════════════════════════════════════ */
+/*  SONG LIST  */
 
-/* Contenedor de lista sin estilos de <ul> por defecto */
 .song-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
 
-/*
- * .song-item → fila de canción
- * grid-template-columns: 2.4rem 1fr
- *   Col 1: número de fila (ancho fijo)
- *   Col 2: info de la canción (flexible)
- */
+/* Fila de canción: miniatura + info */
 .song-item {
   display: grid;
   grid-template-columns: 2.4rem 1fr;
@@ -667,24 +401,16 @@ section { margin-bottom: 3.5rem; }
   cursor: default;
 }
 
-/*
- * .song-item--stats → variante extendida para la página de estadísticas
- * Agrega una columna extra para la miniatura de portada y
- * una columna 'auto' al final para controles opcionales.
- */
+/* Variante con número de fila y duración (para estadísticas) */
 .song-item--stats {
   grid-template-columns: 2.4rem 2.4rem 1fr auto;
 }
 
 .song-item:hover { background: var(--bg3); }
 
-/* Número de fila (1, 2, 3...) */
 .song-num { color: var(--text3); font-size: 0.82rem; text-align: center; }
 
-/*
- * .song-thumb → miniatura cuadrada de portada
- * Fondo de fallback (--bg3) para cuando la imagen no carga.
- */
+/* Miniatura cuadrada de portada */
 .song-thumb {
   width: 2.4rem;
   height: 2.4rem;
@@ -693,17 +419,17 @@ section { margin-bottom: 3.5rem; }
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;  /* No se comprime si el espacio es limitado */
+  flex-shrink: 0;
 }
 .song-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover;     /* Recorta la imagen para llenar el cuadrado */
+  object-fit: cover;
   border-radius: 6px;
-  filter: none;          /* Anula el filtro blanco de .nav-icon en este contexto */
+  filter: none;
 }
 
-/* .song-thumb-sm → versión más pequeña para filas de playlist */
+/* Versión más pequeña para listas de playlist */
 .song-thumb-sm {
   width: 2rem;
   height: 2rem;
@@ -712,15 +438,11 @@ section { margin-bottom: 3.5rem; }
   flex-shrink: 0;
 }
 
-/* Contenedor del texto (título + artista) */
-.song-info    { overflow: visible; min-width: 0; word-break: break-word; }
-.song-title   { font-weight: 500; font-size: 0.9rem; }
-.song-artist  { font-size: 0.77rem; color: var(--text2); }
-/* font-variant-numeric:tabular-nums → todos los dígitos tienen el mismo ancho,
-   útil para duraciones (0:00, 1:23) ya que evita que el texto se mueva */
-.song-dur     { font-size: 0.8rem; color: var(--text3); font-variant-numeric: tabular-nums; }
+.song-info   { overflow: visible; min-width: 0; word-break: break-word; }
+.song-title  { font-weight: 500; font-size: 0.9rem; }
+.song-artist { font-size: 0.77rem; color: var(--text2); }
+.song-dur    { font-size: 0.8rem; color: var(--text3); font-variant-numeric: tabular-nums; }
 
-/* .fav-badge → etiqueta de "Favorito" junto al título */
 .fav-badge {
   background: rgba(168,85,247,0.18);
   color: var(--purple);
@@ -731,22 +453,12 @@ section { margin-bottom: 3.5rem; }
 }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 11 — GENRE BARS
-   Barras de progreso animadas para visualizar la distribución
-   de canciones por género musical.
-   ══════════════════════════════════════════════════════════ */
+/* GENRE BARS  */
 
 .genre-bars { display: flex; flex-direction: column; gap: 0.9rem; }
-
-/* Cada fila: imagen + nombre + barra + número */
 .genre-row  { display: flex; align-items: center; gap: 0.8rem; }
 
-/*
- * .genre-name → área del nombre del género con imagen
- * width:180px fijo garantiza que todas las barras empiecen en la misma columna
- * white-space:nowrap evita que nombres largos rompan el layout
- */
+/* Nombre del género con imagen */
 .genre-name {
   width: 180px;
   font-size: 0.83rem;
@@ -758,7 +470,7 @@ section { margin-bottom: 3.5rem; }
   white-space: nowrap;
 }
 
-/* .genre-img → miniatura cuadrada de la portada del género */
+/* Miniatura cuadrada del género */
 .genre-img {
   width: 2.4rem;
   height: 2.4rem;
@@ -767,44 +479,29 @@ section { margin-bottom: 3.5rem; }
   filter: none;
 }
 
-/* Pista (fondo gris de la barra de progreso) */
+/* Pista de la barra */
 .genre-track {
-  flex: 1;              /* Ocupa todo el espacio restante */
+  flex: 1;
   height: 8px;
   background: var(--bg3);
-  border-radius: 99px;  /* Cápsula redondeada */
-  overflow: hidden;     /* Recorta el relleno que salga del radio */
+  border-radius: 99px;
+  overflow: hidden;
 }
 
-/*
- * .genre-fill → el relleno animado de la barra
- * La animación de width 0→%final (0.7s) se controla desde JS
- * que asigna el ancho dinámicamente con elemento.style.width = X%
- * La transición CSS hace el movimiento suave.
- */
+/* Relleno animado — JS le asigna el ancho final */
 .genre-fill {
   height: 100%;
   border-radius: 99px;
   background: linear-gradient(90deg, var(--purple), var(--purple-l));
-  transition: width 0.7s var(--ease);  /* Animación de 700ms */
-  width: 0;  /* Punto de partida; JS asigna el valor final */
+  transition: width 0.7s var(--ease);
+  width: 0;
 }
 
-/* Número de canciones al final de la barra */
 .genre-count { width: 28px; text-align: right; font-size: 0.8rem; color: var(--text3); }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 12 — FILTROS
-   Barra de búsqueda + select de filtro que se muestra
-   encima de las listas y tablas de canciones.
-   ══════════════════════════════════════════════════════════ */
+/* FILTROS  */
 
-/*
- * .filter-bar → contenedor flex con wrapping
- * flex-wrap:wrap permite que los elementos se reorganicen
- * en múltiples líneas cuando no caben en una.
- */
 .filter-bar {
   display: flex;
   gap: 0.7rem;
@@ -813,7 +510,6 @@ section { margin-bottom: 3.5rem; }
   align-items: center;
 }
 
-/* Estilos compartidos entre input y select del filtro */
 .filter-bar input,
 .filter-bar select {
   background: var(--card);
@@ -821,41 +517,27 @@ section { margin-bottom: 3.5rem; }
   border-radius: var(--radius-sm);
   color: var(--text);
   padding: 0.55rem 1rem;
-  font-family: var(--font-body);  /* Normaliza la fuente (select usa fuente del OS por defecto) */
+  font-family: var(--font-body);
   font-size: 0.88rem;
-  outline: none;                   /* Quitamos el outline nativo; lo reemplazamos con :focus-visible */
+  outline: none;
   transition: border-color var(--transition);
 }
-/* El input de búsqueda crece para usar el espacio disponible */
-.filter-bar input             { flex: 1; min-width: 200px; }
+.filter-bar input           { flex: 1; min-width: 200px; }
 .filter-bar input::placeholder { color: var(--text3); }
-/* Borde morado al enfocar */
 .filter-bar input:focus,
-.filter-bar select:focus      { border-color: var(--purple); }
-/* El menú desplegable del select también usa el fondo oscuro */
-.filter-bar select option     { background: var(--bg2); }
+.filter-bar select:focus    { border-color: var(--purple); }
+.filter-bar select option   { background: var(--bg2); }
 
-/* Contador de resultados (ej: "24 canciones encontradas") */
 .results-count { font-size: 0.82rem; color: var(--text3); margin-left: auto; white-space: nowrap; }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 13 — TABLA DEL CATÁLOGO
-   Tabla completa de canciones con encabezados, filas con
-   hover, badges de género y calificación con estrellas.
-   ══════════════════════════════════════════════════════════ */
+/* TABLA  */
 
-/*
- * .table-wrap → wrapper con scroll horizontal
- * overflow-x:auto permite desplazar la tabla en pantallas
- * pequeñas sin que rompa el layout de la página.
- * border-radius + border → da apariencia de tarjeta a la tabla.
- */
+/* Wrapper con scroll horizontal para pantallas pequeñas */
 .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
 
 .catalogo-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
 
-/* Encabezados de columna */
 .catalogo-table thead th {
   background: var(--bg2);
   color: var(--text2);
@@ -866,35 +548,31 @@ section { margin-bottom: 3.5rem; }
   padding: 0.75rem 0.9rem;
   text-align: left;
   border-bottom: 1px solid var(--border);
-  white-space: nowrap;  /* Evita que los encabezados rompan línea */
+  white-space: nowrap;
 }
 .catalogo-table thead th[scope="col"] { cursor: default; }
 
-/* Filas del cuerpo */
 .catalogo-table tbody tr {
-  border-bottom: 1px solid rgba(160,120,255,0.06);  /* Separador muy sutil */
+  border-bottom: 1px solid rgba(160,120,255,0.06);
   transition: background var(--transition);
 }
 .catalogo-table tbody tr:hover      { background: var(--card); }
-.catalogo-table tbody tr:last-child { border-bottom: none; }  /* Sin borde en la última fila */
+.catalogo-table tbody tr:last-child { border-bottom: none; }
 
-/* Celdas de datos */
 .catalogo-table td {
   padding: 0.65rem 0.9rem;
   color: var(--text);
-  vertical-align: middle;  /* Centra verticalmente si las celdas tienen alturas distintas */
+  vertical-align: middle;
 }
-/* Primera columna (número de fila) en tono tenue */
 .catalogo-table td:first-child { color: var(--text3); }
 
-/* .empty-row → fila especial cuando la búsqueda no tiene resultados */
+/* Fila cuando no hay resultados */
 .empty-row td { text-align: center; padding: 2.5rem; color: var(--text3); font-size: 0.9rem; }
 
-/* Calificación con estrellas */
-.stars       { color: var(--amber); letter-spacing: -1px; font-size: 0.85rem; }
-/* Ícono de favorito (corazón o estrella rosa) */
-.fav-icon    { color: var(--pink); font-size: 1rem; }
-/* .badge-genero → pastilla con el nombre del género en la tabla */
+.stars      { color: var(--amber); letter-spacing: -1px; font-size: 0.85rem; }
+.fav-icon   { color: var(--pink); font-size: 1rem; }
+
+/* Pastilla de género */
 .badge-genero {
   display: inline-block;
   background: rgba(168,85,247,0.14);
@@ -907,25 +585,15 @@ section { margin-bottom: 3.5rem; }
 }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 14 — CARDS FAVORITAS
-   Rejilla de tarjetas cuadradas con portada grande para
-   mostrar las canciones marcadas como favoritas.
-   ══════════════════════════════════════════════════════════ */
+/* CARDS FAVORITAS  */
 
-/*
- * .cards-grid → rejilla auto-fill responsive
- * minmax(190px, 1fr) crea columnas de mínimo 190px que crecen
- * para llenar el espacio disponible. El número de columnas
- * se ajusta automáticamente al ancho del viewport.
- */
+/* Rejilla responsiva, columnas de mínimo 190px */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(190px,1fr));
   gap: 1rem;
 }
 
-/* .fav-card → tarjeta individual */
 .fav-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -934,14 +602,9 @@ section { margin-bottom: 3.5rem; }
   transition: transform var(--transition), border-color var(--transition);
   cursor: default;
 }
-/* Elevación y borde iluminado al hover */
 .fav-card:hover { transform: translateY(-4px); border-color: var(--border-h); }
 
-/*
- * .fav-card-thumb → contenedor cuadrado de la portada
- * aspect-ratio:1 garantiza que sea siempre un cuadrado sin importar el ancho
- * overflow:hidden recorta la imagen a los bordes redondeados
- */
+/* Portada cuadrada */
 .fav-card-thumb {
   width: 100%;
   aspect-ratio: 1;
@@ -955,7 +618,7 @@ section { margin-bottom: 3.5rem; }
 .fav-card-title  { font-weight: 600; font-size: 0.93rem; margin-bottom: 0.2rem; }
 .fav-card-artist { font-size: 0.78rem; color: var(--text2); margin-bottom: 0.5rem; }
 
-/* Fila inferior: género (izquierda) + estrellas (derecha) */
+/* Género (izquierda) + estrellas (derecha) */
 .fav-card-meta   { display: flex; justify-content: space-between; align-items: center; }
 .fav-card-genre  {
   font-size: 0.7rem;
@@ -967,33 +630,22 @@ section { margin-bottom: 3.5rem; }
 .fav-card-stars  { color: var(--amber); font-size: 0.78rem; }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 15 — PLAYLISTS
-   Tarjetas con encabezado, descripción y lista de canciones.
-   Dos variantes: compacta (index) y expandida (página propia).
-   ══════════════════════════════════════════════════════════ */
+/* PLAYLISTS */
 
-/*
- * .playlist-grid → rejilla para el index (tarjetas más compactas)
- * minmax(290px, 1fr): columnas de mínimo 290px
- */
+/* Rejilla para el index */
 .playlist-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(290px,1fr));
   gap: 1.2rem;
 }
 
-/*
- * .playlist-grid2 → rejilla para la página de playlists (tarjetas expandidas)
- * minmax(480px, 1fr): columnas más anchas para mostrar más canciones
- */
+/* Rejilla más ancha para la página de playlists */
 .playlist-grid2 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
   gap: 1.2rem;
 }
 
-/* Tarjeta de playlist — el hover ilumina el borde en cian */
 .playlist-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -1001,13 +653,13 @@ section { margin-bottom: 3.5rem; }
   padding: 1.4rem;
   transition: border-color var(--transition);
 }
-.playlist-card:hover { border-color: rgba(34,211,238,0.4); }  /* Cian en hover (no morado) */
+.playlist-card:hover { border-color: rgba(34,211,238,0.4); }
 
 .playlist-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.4rem; }
 .playlist-name   { font-family: var(--font-head); font-size: 1.05rem; font-weight: 700; }
 
-/* Badge de visibilidad de la playlist */
-.playlist-badge-pub  { /* Pública → cian */
+/* Badge pública (cian) / privada (gris) */
+.playlist-badge-pub  {
   font-size: 0.68rem;
   background: rgba(34,211,238,0.12);
   color: var(--cyan);
@@ -1015,7 +667,7 @@ section { margin-bottom: 3.5rem; }
   padding: 2px 9px;
   white-space: nowrap;
 }
-.playlist-badge-priv { /* Privada → gris */
+.playlist-badge-priv {
   font-size: 0.68rem;
   background: rgba(107,95,138,0.2);
   color: var(--text3);
@@ -1024,16 +676,13 @@ section { margin-bottom: 3.5rem; }
   white-space: nowrap;
 }
 
-.playlist-desc       { font-size: 0.82rem; color: var(--text2); margin-bottom: 1rem; }
-.playlist-songs      { display: flex; flex-direction: column; gap: 0.35rem; }
+.playlist-desc  { font-size: 0.82rem; color: var(--text2); margin-bottom: 1rem; }
+.playlist-songs { display: flex; flex-direction: column; gap: 0.35rem; }
 
-/* .playlist-song-row → fila compacta de canción (versión index) */
-.playlist-song-row   { display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; color: var(--text2); }
+/* Fila compacta de canción (index) */
+.playlist-song-row  { display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; color: var(--text2); }
 
-/*
- * .playlist-song-row2 → fila con grid para la página de playlists
- * 4 columnas: número | miniatura | título+artista | duración
- */
+/* Fila con grid para la página de playlists */
 .playlist-song-row2 {
   display: grid;
   grid-template-columns: 1.4rem 2rem 1fr auto;
@@ -1043,27 +692,15 @@ section { margin-bottom: 3.5rem; }
   color: var(--text2);
 }
 
-/* Título y artista en versión expandida */
-.playlist-song-title2 {
-  color: var(--text);
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;  /* "..." si el texto es muy largo */
-}
-.playlist-song-artist2 {
-  color: var(--text3);
-  white-space: nowrap;
-}
+.playlist-song-title2  { color: var(--text); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.playlist-song-artist2 { color: var(--text3); white-space: nowrap; }
 
-/* Componentes de fila compacta (index) */
-.playlist-song-num   { width: 1.4rem; text-align: right; color: var(--text3); font-size: 0.73rem; }
-.playlist-song-title { color: var(--text); font-weight: 500; }
-.playlist-song-artist{ color: var(--text3); }
-/* Pie de la tarjeta con botones de acción */
-.playlist-actions    { display: flex; gap: 0.5rem; margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid var(--border); }
+.playlist-song-num    { width: 1.4rem; text-align: right; color: var(--text3); font-size: 0.73rem; }
+.playlist-song-title  { color: var(--text); font-weight: 500; }
+.playlist-song-artist { color: var(--text3); }
+.playlist-actions     { display: flex; gap: 0.5rem; margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid var(--border); }
 
-/* .page-header--split → encabezado con título izquierda + botón derecha */
+/* Encabezado con título + botón */
 .page-header--split {
   display: flex;
   align-items: flex-start;
@@ -1072,16 +709,11 @@ section { margin-bottom: 3.5rem; }
   gap: 1rem;
 }
 
-/* Espaciado en grupos de formulario dentro del modal */
 .form-group--mb    { margin-bottom: 1rem; }
 .form-group--mb-lg { margin-bottom: 1.5rem; }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 16 — ESTADÍSTICAS DETALLADAS
-   Rejilla de tarjetas con métricas secundarias del catálogo
-   (duración total, promedio de calificación, etc.)
-   ══════════════════════════════════════════════════════════ */
+/* ESTADÍSTICAS DETALLADAS  */
 
 .stats-detail {
   display: grid;
@@ -1095,53 +727,35 @@ section { margin-bottom: 3.5rem; }
   padding: 1.3rem 1.5rem;
   transition: border-color var(--transition);
 }
-.stat-detail-card:hover { border-color: var(--border-h); }
-/* Etiqueta pequeña estilo "eyebrow" */
-.stat-detail-label { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); margin-bottom: 0.3rem; }
-/* Valor en morado y tipografía display */
-.stat-detail-value { font-family: var(--font-head); font-size: 1.6rem; font-weight: 700; color: var(--purple); }
-/* Texto aclaratorio debajo del valor */
-.stat-detail-sub   { font-size: 0.78rem; color: var(--text2); margin-top: 0.15rem; }
+.stat-detail-card:hover  { border-color: var(--border-h); }
+.stat-detail-label       { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); margin-bottom: 0.3rem; }
+.stat-detail-value       { font-family: var(--font-head); font-size: 1.6rem; font-weight: 700; color: var(--purple); }
+.stat-detail-sub         { font-size: 0.78rem; color: var(--text2); margin-top: 0.15rem; }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 17 — FORMULARIOS
-   Sistema de formularios completo: inputs, selects,
-   textareas, calificación con estrellas y checkboxes.
-   ══════════════════════════════════════════════════════════ */
+/*FORMULARIOS  */
 
-/* .form-card → tarjeta contenedora del formulario */
+/* Tarjeta contenedora del formulario */
 .form-card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 2rem;
   max-width: 700px;
-  margin-bottom: 5rem;  /* Espacio para que el footer no tape el formulario */
+  margin-bottom: 5rem;
 }
 
-/*
- * .form-grid → cuadrícula de 2 columnas para los campos
- * Se colapsa a 1 columna en móvil (≤600px)
- */
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem 1.5rem;
-}
+/* Grid de 2 columnas, colapsa a 1 en móvil */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem 1.5rem; }
 @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
 
-/* .form-group → contenedor vertical de label + input */
 .form-group      { display: flex; flex-direction: column; gap: 0.4rem; }
-/* .full → campo que ocupa las 2 columnas del grid */
 .form-group.full { grid-column: 1/-1; }
 
-/* Label del campo */
-.form-label          { font-size: 0.82rem; font-weight: 500; color: var(--text2); text-transform: uppercase; letter-spacing: 0.06em; }
-/* Asterisco de campo obligatorio */
+.form-label           { font-size: 0.82rem; font-weight: 500; color: var(--text2); text-transform: uppercase; letter-spacing: 0.06em; }
 .form-label .required { color: var(--pink); margin-left: 2px; }
 
-/* Estilos compartidos entre input, select y textarea */
+/* Estilos compartidos: input, select, textarea */
 .form-input,
 .form-select,
 .form-textarea {
@@ -1157,62 +771,38 @@ section { margin-bottom: 3.5rem; }
   width: 100%;
 }
 .form-input::placeholder { color: var(--text3); }
-/* Focus: borde morado + aura suave */
 .form-input:focus,
 .form-select:focus,
 .form-textarea:focus {
   border-color: var(--purple);
-  box-shadow: 0 0 0 3px rgba(168,85,247,0.15);  /* Sombra exterior como "glow" */
+  box-shadow: 0 0 0 3px rgba(168,85,247,0.15);
 }
-/* Estado de error: borde rosa */
-.form-input.error    { border-color: var(--pink); }
-.form-select option  { background: var(--bg2); }
-/* El textarea puede redimensionarse solo verticalmente */
-.form-textarea       { resize: vertical; min-height: 80px; }
+.form-input.error   { border-color: var(--pink); }
+.form-select option { background: var(--bg2); }
+.form-textarea      { resize: vertical; min-height: 80px; }
 
-/* Textos auxiliares del campo */
 .form-hint  { font-size: 0.76rem; color: var(--text3); margin-top: 0.2rem; }
-/* .form-error → oculto por defecto; JS agrega .visible para mostrarlo */
+/* Oculto por defecto, JS agrega .visible para mostrarlo */
 .form-error { font-size: 0.76rem; color: var(--pink); margin-top: 0.2rem; display: none; }
 .form-error.visible { display: block; }
 
-/*
- * .star-rating → campo de calificación con estrellas
- *
- * TRUCO CSS:
- * Los radio buttons están ocultos (display:none). Los labels son
- * estrellas Unicode visibles. El CSS usa la combinación de
- * selectores + y ~ para detectar cuál radio está seleccionado
- * y colorear la estrella correspondiente y todas las anteriores.
- *
- * El orden de las estrellas en el HTML es INVERSO (5,4,3,2,1)
- * para que el truco CSS de coloreado "hacia atrás" funcione.
- */
+/* Calificación con estrellas — los radio están ocultos, los labels son las estrellas */
 .star-rating { display: flex; gap: 0.3rem; }
 .star-rating input[type="radio"] { display: none; }
 .star-rating label {
   font-size: 1.4rem;
-  color: var(--text3);   /* Vacía por defecto */
+  color: var(--text3);
   cursor: pointer;
   transition: color var(--transition);
 }
-/* Colorea todas las estrellas al hover de la fila */
-.star-rating:hover label { color: var(--amber); }
-/* La estrella actual y las siguientes (~ = hermanos posteriores) quedan vacías */
-.star-rating label:hover ~ label { color: var(--text3); }
-/* La estrella del radio marcado queda llena */
+.star-rating:hover label          { color: var(--amber); }
+.star-rating label:hover ~ label  { color: var(--text3); }
 .star-rating input:checked + label { color: var(--amber); }
 
-/*
- * .form-check → checkbox personalizado con apariencia de diseño propio
- *
- * Se usa appearance:none para borrar el estilo nativo del navegador,
- * y luego se reconstruye con CSS puro. El tick (✓) se agrega con
- * ::after en el estado :checked.
- */
+/* Checkbox personalizado */
 .form-check { display: flex; align-items: center; gap: 0.6rem; cursor: pointer; }
 .form-check input[type="checkbox"] {
-  appearance: none;  /* Elimina el checkbox nativo */
+  appearance: none;
   width: 1.1rem; height: 1.1rem;
   background: var(--bg3);
   border: 1px solid var(--border);
@@ -1221,9 +811,7 @@ section { margin-bottom: 3.5rem; }
   transition: all var(--transition);
   flex-shrink: 0;
 }
-/* Estado marcado: fondo morado sólido */
 .form-check input[type="checkbox"]:checked { background: var(--purple); border-color: var(--purple); }
-/* El tick blanco como pseudo-elemento */
 .form-check input[type="checkbox"]:checked::after {
   content: '✓';
   display: flex;
@@ -1235,7 +823,6 @@ section { margin-bottom: 3.5rem; }
 }
 .form-check-label { font-size: 0.88rem; color: var(--text2); }
 
-/* .form-actions → fila de botones de acción del formulario */
 .form-actions .btn {
   display: flex;
   gap: 0.8rem;
@@ -1246,30 +833,17 @@ section { margin-bottom: 3.5rem; }
 }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 18 — LOGIN
-   Página de inicio de sesión con formulario centrado.
-   ══════════════════════════════════════════════════════════ */
+/* LOGIN  */
 
-/* Limita el ancho y centra el formulario de login */
 .login-section { max-width: 420px; margin: 0 auto; }
 
-/* Avatar circular grande arriba del formulario */
-.login-avatar { display: flex; justify-content: center; margin-bottom: 1.5rem; }
+.login-avatar     { display: flex; justify-content: center; margin-bottom: 1.5rem; }
 .login-avatar img { width: 100px; height: 100px; }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 19 — ALERTAS
-   Mensajes de retroalimentación para acciones del usuario
-   (éxito al iniciar sesión, error de credenciales, etc.)
-   ══════════════════════════════════════════════════════════ */
+/* ALERTAS  */
 
-/*
- * .alert → base de la alerta
- * display:none por defecto; JS agrega .visible para mostrarla.
- * Usa display:flex para alinear el ícono con el texto.
- */
+/* Oculta por defecto, JS agrega .visible para mostrarla */
 .alert {
   padding: 1rem 1.2rem;
   border-radius: var(--radius-sm);
@@ -1281,32 +855,20 @@ section { margin-bottom: 3.5rem; }
 }
 .alert.visible { display: flex; }
 
-/* Verde para acciones exitosas */
-.alert-success { background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.3); color: var(--green); }
-/* Rosa para errores */
-.alert-error   { background: rgba(236,72,153,0.1);  border: 1px solid rgba(236,72,153,0.3);  color: var(--pink); }
+.alert-success { background: rgba(52,211,153,0.12);  border: 1px solid rgba(52,211,153,0.3);  color: var(--green); }
+.alert-error   { background: rgba(236,72,153,0.1);   border: 1px solid rgba(236,72,153,0.3);   color: var(--pink); }
 
-/* Ícono ilustrativo dentro de la alerta */
 .alert-icon { width: 24px; height: 24px; object-fit: contain; }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 20 — MODAL
-   Ventana flotante para confirmaciones y formularios cortos.
-   Usa overlay semitransparente + transformación para animar.
-   ══════════════════════════════════════════════════════════ */
+/* MODAL */
 
-/*
- * .modal-overlay → capa oscura de fondo
- * position:fixed cubre TODA la ventana (no solo el scroll visible)
- * opacity:0 + pointer-events:none → invisible e ininteractivo por defecto
- * JS agrega .open para mostrarlo
- */
+/* Capa oscura de fondo, invisible hasta que JS agrega .open */
 .modal-overlay {
   position: fixed;
-  inset: 0;  /* Equivale a top:0; right:0; bottom:0; left:0 */
+  inset: 0;
   background: rgba(0,0,0,0.65);
-  z-index: 200;  /* Por encima del nav (z-index:100) */
+  z-index: 200;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1317,11 +879,7 @@ section { margin-bottom: 3.5rem; }
 }
 .modal-overlay.open { opacity: 1; pointer-events: all; }
 
-/*
- * .modal → panel del contenido del modal
- * translateY(20px) → empieza 20px hacia abajo para la animación de entrada
- * Al agregar .open al overlay, la transición lo sube a su posición final
- */
+/* Panel del modal, sube desde abajo al abrirse */
 .modal {
   background: var(--bg2);
   border: 1px solid var(--border-h);
@@ -1329,14 +887,13 @@ section { margin-bottom: 3.5rem; }
   padding: 1.8rem;
   width: 100%;
   max-width: 520px;
-  transform: translateY(20px);  /* Posición inicial (abajo) */
+  transform: translateY(20px);
   transition: transform 0.25s var(--ease);
 }
-.modal-overlay.open .modal { transform: translateY(0); }  /* Posición final (normal) */
+.modal-overlay.open .modal { transform: translateY(0); }
 
 .modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
 .modal-title  { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; }
-/* Botón de cierre (×) */
 .modal-close  {
   background: none; border: none;
   color: var(--text3); font-size: 1.2rem;
@@ -1347,10 +904,7 @@ section { margin-bottom: 3.5rem; }
 .modal-close:hover { color: var(--text); }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 21 — FOOTER
-   Pie de página mínimo con texto de créditos.
-   ══════════════════════════════════════════════════════════ */
+/* FOOTER  */
 
 footer {
   text-align: center;
@@ -1363,13 +917,9 @@ footer a       { color: var(--text3); text-decoration: none; }
 footer a:hover { color: var(--purple); }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 22 — ENLACE "VER TODO"
-   Enlace con flecha que aparece debajo de secciones con
-   contenido limitado (ej: "Ver todas las canciones →").
-   La flecha se aleja al hacer hover para reforzar la dirección.
-   ══════════════════════════════════════════════════════════ */
+/* VER TODO */
 
+/* La flecha se separa del texto al hacer hover */
 .ver-todo {
   display: inline-flex;
   align-items: center;
@@ -1379,17 +929,12 @@ footer a:hover { color: var(--purple); }
   text-decoration: none;
   margin-top: 1rem;
   font-weight: 500;
-  transition: gap var(--transition);  /* Solo anima el gap (separación) */
+  transition: gap var(--transition);
 }
-/* En hover, el gap aumenta → la flecha "se separa" del texto */
 .ver-todo:hover { gap: 0.7rem; }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 23 — CLASES UTILITARIAS
-   Clases de un solo propósito para ajustes rápidos.
-   Similar al enfoque de Tailwind CSS pero manual.
-   ══════════════════════════════════════════════════════════ */
+/* UTILIDADES  */
 
 .text-purple    { color: var(--purple); }
 .text-cyan      { color: var(--cyan); }
@@ -1402,114 +947,73 @@ footer a:hover { color: var(--purple); }
 .justify-between{ justify-content: space-between; }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 24 — ANIMACIONES
-   @keyframes para efectos de entrada.
-   Se usa con la clase .fade-in en elementos renderizados por JS.
-   ══════════════════════════════════════════════════════════ */
+/* ANIMACIONES  */
 
-/*
- * fadeIn — aparece con opacidad y sube ligeramente
- * El translateY(10px) → (0) crea la ilusión de que el elemento
- * "emerge" desde abajo al cargarse.
- */
+/* Aparece con opacidad y sube ligeramente */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-/* Clase para aplicar la animación a cualquier elemento */
 .fade-in { animation: fadeIn 0.35s var(--ease) forwards; }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 25 — MEDIA QUERIES RESPONSIVAS
-   Ajustes de layout para pantallas medianas y pequeñas.
-   Breakpoints: 900px (tablet), 600px (móvil), 400px (móvil S)
-   ══════════════════════════════════════════════════════════ */
+/* ── MEDIA QUERIES ─────────────────────────────────────── */
 
-/* Tablet y pantallas medianas (≤900px) */
 @media (max-width: 900px) {
-  main        { padding: 1.5rem 1.2rem 4rem; }  /* Menos padding lateral */
-  .stats-grid { grid-template-columns: repeat(2,1fr); }  /* 4→2 columnas */
+  main        { padding: 1.5rem 1.2rem 4rem; }
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
 }
 
-/* Móvil (≤600px) */
 @media (max-width: 600px) {
-  .section-title { font-size: 1.2rem; }       /* Títulos más pequeños */
-  .stat-value    { font-size: 1.8rem; }        /* Números más pequeños */
-  .filter-bar    { flex-direction: column; }   /* Filtros en columna */
-  .filter-bar input { min-width: unset; }      /* El input ocupa todo el ancho */
-  .form-card     { padding: 1.2rem; }          /* Menos padding en el formulario */
-  .cards-grid    { grid-template-columns: repeat(2,1fr); }  /* 2 columnas en móvil */
+  .section-title    { font-size: 1.2rem; }
+  .stat-value       { font-size: 1.8rem; }
+  .filter-bar       { flex-direction: column; }
+  .filter-bar input { min-width: unset; }
+  .form-card        { padding: 1.2rem; }
+  .cards-grid       { grid-template-columns: repeat(2,1fr); }
 }
 
-/* Móvil pequeño (≤400px) */
 @media (max-width: 400px) {
-  .cards-grid { grid-template-columns: 1fr; }  /* 1 sola columna en pantallas muy pequeñas */
+  .cards-grid { grid-template-columns: 1fr; }
 }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 26 — ACCESIBILIDAD AVANZADA
+/* ── ACCESIBILIDAD AVANZADA ────────────────────────────── */
 
-   MODO ALTO CONTRASTE:
-   Algunos usuarios tienen esta preferencia del sistema activada
-   por necesidad médica (baja visión). Aumentamos la opacidad
-   de los colores tenues para mejorar la legibilidad.
-
-   REDUCE MOTION:
-   Usuarios con epilepsia fotosensible o vértigo pueden tener
-   esta preferencia activada. Reducimos todas las animaciones
-   a casi 0 para evitar movimiento innecesario.
-   (prefers-reduced-motion es parte del estándar WCAG 2.3)
-   ══════════════════════════════════════════════════════════ */
-
+/* Bordes más visibles para usuarios con alto contraste */
 @media (prefers-contrast: high) {
   :root {
-    --border: rgba(200,160,255,0.5);  /* Bordes más visibles */
-    --text2:  #d4c8f0;                /* Texto secundario más claro */
-    --text3:  #9988bb;                /* Texto tenue más visible */
+    --border: rgba(200,160,255,0.5);
+    --text2:  #d4c8f0;
+    --text3:  #9988bb;
   }
 }
 
+/* Sin animaciones para usuarios que lo prefieran */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
-    animation-duration: 0.01ms !important;  /* Prácticamente sin animación */
-    transition-duration: 0.01ms !important; /* Prácticamente sin transición */
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
 
-/* ══════════════════════════════════════════════════════════
-   SECCIÓN 27 — CLASES ADICIONALES Y SECCIONES ESPECÍFICAS
-   Estilos para componentes menores que no encajaban en las
-   secciones principales o fueron agregados posteriormente.
-   ══════════════════════════════════════════════════════════ */
+/* ── CLASES ADICIONALES ────────────────────────────────── */
 
-/* Estado vacío genérico (cuando no hay datos para mostrar) */
-.empty-state         { grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text3); }
-/* Ícono decorativo del estado vacío (ej: lupa, nota musical) */
-.empty-state-icon    { width: 3rem; height: 3rem; opacity: 0.4; filter: brightness(0) invert(1); margin-bottom: 1rem; display: block; margin-inline: auto; }
+/* Estado vacío cuando no hay datos */
+.empty-state      { grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text3); }
+.empty-state-icon { width: 3rem; height: 3rem; opacity: 0.4; filter: brightness(0) invert(1); margin-bottom: 1rem; display: block; margin-inline: auto; }
 
-/* Textos auxiliares dentro de las playlists */
-.playlist-empty      { color: var(--text3); font-size: 0.82rem; }
-/* "y X canciones más..." */
-.playlist-mas        { color: var(--text3); font-size: 0.75rem; margin-top: 0.4rem; }
-/* "X canciones en total" */
-.playlist-total      { font-size: 0.8rem; color: var(--text3); }
+.playlist-empty { color: var(--text3); font-size: 0.82rem; }
+.playlist-mas   { color: var(--text3); font-size: 0.75rem; margin-top: 0.4rem; }
+.playlist-total { font-size: 0.8rem; color: var(--text3); }
 
-/* Duración de la canción dentro de las tarjetas de favoritos */
 .fav-duracion { color: var(--text3); }
 
 
-/* ── Sección Agregar canción ──────────────────────────── */
+/* ── AGREGAR CANCIÓN ───────────────────────────────────── */
 
-/*
- * .form-fieldset → agrupa campos relacionados dentro del formulario
- * Sin borde ni padding para que visualmente se integre con el form-card
- */
 .form-fieldset        { border: none; padding: 0; margin: 0 0 1.5rem; }
-/* Leyenda estilo "eyebrow" para el fieldset */
 .form-fieldset-legend {
   font-family: var(--font-head);
   font-size: 0.85rem;
@@ -1519,11 +1023,7 @@ footer a:hover { color: var(--purple); }
   margin-bottom: 1rem;
 }
 
-/*
- * .xml-preview → bloque de código XML generado por el formulario
- * font-family:monospace para que el código sea legible
- * white-space:pre-wrap preserva sangría y saltos de línea del XML
- */
+/* Bloque de código XML generado */
 .xml-preview {
   font-size: 0.8rem;
   color: var(--text2);
@@ -1533,5 +1033,203 @@ footer a:hover { color: var(--purple); }
   white-space: pre-wrap;
 }
 
-/* Enlace dentro de alertas que hereda el color de la alerta */
 .alert-link { color: inherit; }
+
+
+/* ── SOBRE LA AUTORA ───────────────────────────────────── */
+
+/* Galería de 3 fotos */
+.foto-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-bottom: 3rem;
+}
+
+.foto-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  aspect-ratio: 4/3;
+  position: relative;
+}
+
+.foto-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s var(--ease);
+}
+
+.foto-card:hover img { transform: scale(1.05); }
+
+/* Etiqueta con gradiente sobre la foto */
+.foto-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.6rem 0.9rem;
+  background: linear-gradient(transparent, rgba(13,11,23,0.9));
+  font-size: 0.78rem;
+  color: var(--text2);
+  font-weight: 500;
+}
+
+/* Foto + nombre + carrera */
+.autora-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.autora-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--purple);
+  flex-shrink: 0;
+}
+
+.autora-nombre {
+  font-family: var(--font-head);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.autora-carrera {
+  font-size: 0.88rem;
+  color: var(--purple);
+  margin-top: 0.3rem;
+  font-weight: 500;
+}
+
+.autora-bio {
+  font-size: 0.95rem;
+  color: var(--text2);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+}
+
+/* Tarjeta de canción favorita */
+.cancion-favorita {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  margin-bottom: 3rem;
+  max-width: 500px;
+  transition: border-color var(--transition);
+}
+.cancion-favorita:hover { border-color: var(--border-h); }
+
+.cancion-portada {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.cancion-info-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--purple);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.cancion-titulo  { font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; color: var(--text); }
+.cancion-artista { font-size: 0.83rem; color: var(--text2); margin-top: 0.2rem; }
+
+/* Título de sección de curiosidades */
+.curiosidades-titulo {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Tarjetitas de datos curiosos */
+.curiosidades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.curiosidad-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.4rem;
+  transition: transform var(--transition), border-color var(--transition);
+}
+.curiosidad-card:hover { transform: translateY(-3px); border-color: var(--border-h); }
+
+.curiosidad-emoji { font-size: 1.6rem; margin-bottom: 0.6rem; display: block; }
+.curiosidad-texto { font-size: 0.85rem; color: var(--text2); line-height: 1.5; }
+
+/* Panel del proyecto */
+.proyecto-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  margin-bottom: 3rem;
+}
+
+.proyecto-panel h2 {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.proyecto-panel p { font-size: 0.9rem; color: var(--text2); line-height: 1.8; }
+
+/* Botón de regresar al inicio */
+.btn-regresar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  font-size: 0.85rem;
+  color: var(--text3);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.btn-regresar:hover { color: var(--purple); }
+
+.btn-regresar img {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(0.5);
+  transform: rotate(180deg);
+}
+
+/* Responsive de la página de autora */
+@media (max-width: 700px) {
+  .foto-grid        { grid-template-columns: 1fr; }
+  .autora-header    { flex-direction: column; text-align: center; }
+  .cancion-favorita { flex-direction: column; text-align: center; }
+}

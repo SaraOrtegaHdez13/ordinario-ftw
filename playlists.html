@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Playlists — Clonspotify</title>
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+</head>
+<body>
+
+  <nav>
+
+    <div class="nav-brand">
+      <img src="resources/Logo.png" class="brand-logo" />
+      <span class="brand-name">Clonspotify</span>
+    </div>
+
+    <button class="nav-toggle" id="nav-toggle">☰</button>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">        <img src="resources/home.svg"        class="nav-icon"> Inicio</a></li>
+      <li><a href="catalogo.html">     <img src="resources/music.svg"       class="nav-icon"> Catálogo</a></li>
+      <li><a href="favoritas.html">    <img src="resources/heart.svg"       class="nav-icon"> Favoritas</a></li>
+      <li><a href="playlists.html">    <img src="resources/playlist.svg"    class="nav-icon"> Playlists</a></li>
+      <li><a href="estadisticas.html"> <img src="resources/chart-bar.svg"   class="nav-icon"> Estadísticas</a></li>
+      <li><a href="agregar.html">      <img src="resources/square-plus.svg" class="nav-icon"> Agregar</a></li>
+    </ul>
+
+  </nav>
+
+  <!-- ENCABEZADO DE PÁGINA -->
+  <header class="page-header page-header--split">
+
+    <div>
+      <h1><span class="accent">Playlists</span></h1>
+      <p class="subtitle">Crea y explora tus colecciones de canciones</p>
+    </div>
+
+    <button class="btn btn-primary" id="btn-nueva-playlist">
+      <img src="resources/square-plus.svg" class="nav-icon">
+      Nueva playlist
+    </button>
+  </header>
+
+  <!-- FILTROS -->
+  <section>
+    <div class="filter-bar">
+      <input type="search" id="buscar-pl"
+             placeholder="Buscar playlist…"
+             autocomplete="off" />
+
+      <select id="filtro-pl-visibilidad">
+        <option value="">Todas</option>
+        <option value="si">Públicas</option>
+        <option value="no">Privadas</option>
+      </select>
+
+      <span class="results-count" id="pl-count">0 playlists</span>
+    </div>
+  </section>
+
+  <!-- GRID DE PLAYLISTS -->
+  <section>
+    <div class="playlist-grid2" id="grid-playlists"></div>
+  </section>
+
+  <!-- MODAL: NUEVA PLAYLIST -->
+  <div class="modal-overlay" id="modal-nueva-playlist">
+
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-pl-titulo">Nueva playlist</h2>
+        <button class="modal-close" id="modal-close-pl">✕</button>
+      </div>
+
+      <!-- Alertas -->
+      <div class="alert alert-success" id="alert-pl-ok">
+        <img src="resources/check.svg" class="nav-icon">
+        <span id="alert-pl-ok-msg">Playlist creada exitosamente.</span>
+      </div>
+
+      <div class="alert alert-error" id="alert-pl-err">
+        <span>⚠</span>
+        <span id="alert-pl-err-msg"> <img src="resources/alert-triangle.svg" class="nav-icon"> Por favor completa todos los campos requeridos.</span>
+      </div>
+
+      <!-- Formulario -->
+      <div>
+        <div class="form-group form-group--mb">
+          <label class="form-label" for="pl-nombre">
+            Nombre <span class="required">*</span>
+          </label>
+          <input class="form-input" type="text" id="pl-nombre"
+                 placeholder="Nombre de la playlist"
+                 required />
+          <span class="form-error" id="pl-nombre-err">El nombre es obligatorio.</span>
+        </div>
+
+        <div class="form-group form-group--mb">
+          <label class="form-label" for="pl-desc">Descripción</label>
+          <textarea class="form-textarea" id="pl-desc"
+                    placeholder="Una breve descripción de la playlist…"
+                    rows="2"></textarea>
+          <span class="form-hint">Opcional. Describe el tema o estado de ánimo de la playlist.</span>
+        </div>
+
+        <div class="form-group form-group--mb-lg">
+          <label class="form-check" for="pl-publica">
+            <input type="checkbox" id="pl-publica" name="pl-publica" />
+            <span class="form-check-label">Playlist pública</span>
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-primary" id="btn-crear-pl">
+            <img src="resources/square-plus.svg" class="nav-icon"> Crear playlist
+          </button>
+          <button type="button" class="btn btn-secondary" id="btn-cancelar-pl">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pie de página -->
+  <footer>
+    <p>Clonspotify © 2026</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/playlists.js"></script>
+</body>
+</html>

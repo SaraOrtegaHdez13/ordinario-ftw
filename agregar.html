@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Agregar canción — Clonspotify</title>
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+</head>
+<body>
+
+  <nav>
+
+    <div class="nav-brand">
+      <img src="resources/Logo.png" class="brand-logo" />
+      <span class="brand-name">Clonspotify</span>
+    </div>
+
+    <button class="nav-toggle" id="nav-toggle">☰</button>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">        <img src="resources/home.svg"        class="nav-icon"> Inicio</a></li>
+      <li><a href="catalogo.html">     <img src="resources/music.svg"       class="nav-icon"> Catálogo</a></li>
+      <li><a href="favoritas.html">    <img src="resources/heart.svg"       class="nav-icon"> Favoritas</a></li>
+      <li><a href="playlists.html">    <img src="resources/playlist.svg"    class="nav-icon"> Playlists</a></li>
+      <li><a href="estadisticas.html"> <img src="resources/chart-bar.svg"   class="nav-icon"> Estadísticas</a></li>
+      <li><a href="agregar.html">      <img src="resources/square-plus.svg" class="nav-icon"> Agregar</a></li>
+    </ul>
+
+  </nav>
+
+  <div class="page-header">
+    <h1>Agregar <span class="accent">nueva canción</span></h1>
+    <p class="subtitle">Completa los datos de la canción para añadirla a la biblioteca</p>
+  </div>
+
+  <!-- ALERTAS -->
+  <div class="alert alert-success" id="alert-ok" role="alert">
+    <span>✓</span>
+    <span>Canción agregada exitosamente. Puedes verla en el
+      <a href="catalogo.html" class="alert-link">catálogo</a>.
+    </span>
+  </div>
+
+  <div class="alert alert-error" id="alert-err">
+    <span id="alert-err-msg"><img src="resources/alert-triangle.svg" class="nav-icon"> Por favor corrige los errores antes de continuar.</span>
+  </div>
+
+  <!-- FORMULARIO PRINCIPAL -->
+  <section>
+
+    <div class="form-card">
+      <form id="form-cancion" novalidate>
+
+        <!-- Información básica -->
+        <fieldset class="form-fieldset">
+          <legend class="form-fieldset-legend">Información básica</legend>
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label class="form-label" for="titulo">
+                Título <span class="required">*</span>
+              </label>
+              <input class="form-input" type="text" id="titulo" name="titulo"
+                     placeholder="Nombre de la canción" required />
+              <span class="form-error" id="titulo-err">El título es obligatorio.</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="artista">
+                Artista <span class="required">*</span>
+              </label>
+              <input class="form-input" type="text" id="artista" name="artista"
+                     placeholder="Nombre del artista o banda" required />
+              <span class="form-error" id="artista-err">El artista es obligatorio.</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="album">Álbum</label>
+              <input class="form-input" type="text" id="album" name="album"
+                     placeholder="Nombre del álbum" />
+              <span class="form-hint">Opcional.</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="anio">
+                Año <span class="required">*</span>
+              </label>
+              <input class="form-input" type="number" id="anio" name="anio"
+                     placeholder="2024" min="1900" max="2099" required />
+              <span class="form-error" id="anio-err">Ingresa un año válido (1900–2099).</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="duracion">
+                Duración <span class="required">*</span>
+              </label>
+              <input class="form-input" type="text" id="duracion" name="duracion"
+                     placeholder="3:45" pattern="^\d{1,2}:\d{2}$" required />
+              <span class="form-hint">Formato: minutos:segundos (ej. 3:45)</span>
+              <span class="form-error" id="duracion-err">Ingresa la duración en formato m:ss (ej. 3:45).</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="idioma">
+                Idioma <span class="required">*</span>
+              </label>
+              <select class="form-select" id="idioma" name="idioma" required>
+                <option value="">Seleccionar idioma…</option>
+                <option value="Español">Español</option>
+                <option value="Inglés">Inglés</option>
+                <option value="Otro">Otro</option>
+              </select>
+              <span class="form-error" id="idioma-err">Selecciona un idioma.</span>
+            </div>
+
+          </div>
+        </fieldset>
+
+        <!-- Clasificación -->
+        <fieldset class="form-fieldset">
+          <legend class="form-fieldset-legend">Clasificación</legend>
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label class="form-label" for="genero">
+                Género <span class="required">*</span>
+              </label>
+              <select class="form-select" id="genero" name="genero" required>
+                <option value="">Seleccionar género…</option>
+                <option value="Balada">Balada</option>
+                <option value="Salsa">Salsa</option>
+                <option value="Cumbia">Cumbia</option>
+                <option value="Videojuegos">Videojuegos</option>
+                <option value="Banda">Banda</option>
+                <option value="Rock">Rock</option>
+                <option value="Bolero">Bolero</option>
+                <option value="PopLatino">Pop Latino</option>
+                <option value="Otro">Otro</option>
+              </select>
+              <span class="form-error" id="genero-err">Selecciona un género.</span>
+            </div>
+
+            <div class="form-group">
+              <span class="form-label">
+                Calificación <span class="required">*</span>
+              </span>
+              <div class="star-rating" id="star-rating-group">
+                <input type="radio" id="star5" name="calificacion" value="5" />
+                <label for="star5" title="5 estrellas">★</label>
+                <input type="radio" id="star4" name="calificacion" value="4" />
+                <label for="star4" title="4 estrellas">★</label>
+                <input type="radio" id="star3" name="calificacion" value="3" />
+                <label for="star3" title="3 estrellas">★</label>
+                <input type="radio" id="star2" name="calificacion" value="2" />
+                <label for="star2" title="2 estrellas">★</label>
+                <input type="radio" id="star1" name="calificacion" value="1" />
+                <label for="star1" title="1 estrella">★</label>
+              </div>
+              <span class="form-error" id="calificacion-err">Selecciona una calificación.</span>
+            </div>
+
+            <div class="form-group full">
+              <label class="form-check" for="favorita">
+                <input type="checkbox" id="favorita" name="favorita" />
+                <span class="form-check-label">Marcar como favorita</span>
+              </label>
+            </div>
+
+          </div>
+        </fieldset>
+
+        <!-- Notas -->
+        <div class="form-group form-group--mb-lg">
+          <label class="form-label" for="letra">Letra o notas adicionales</label>
+          <textarea class="form-textarea" id="letra" name="letra"
+                    rows="4"
+                    placeholder="Fragmento de letra, notas, o información adicional…"></textarea>
+          <span class="form-hint">Opcional. No se incluirá en el XML exportado.</span>
+        </div>
+
+        <!-- Acciones -->
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="btn-guardar">
+            Agregar canción
+          </button>
+          <button type="reset" class="btn btn-secondary" id="btn-reset">
+            Limpiar
+          </button>
+          <a href="catalogo.html" class="btn btn-ghost">
+            Ver catálogo
+          </a>
+        </div>
+
+      </form>
+    </div>
+
+  </section>
+
+  <!-- PREVIEW XML -->
+  <section>
+    <h2 class="section-title">
+      <span class="s-icon">⟨/⟩</span> Vista previa del XML generado
+    </h2>
+    <div class="panel">
+      <pre id="xml-preview" class="xml-preview"></pre>
+    </div>
+  </section>
+
+  <!-- Pie de página -->
+  <footer>
+    <p>Clonspotify © 2026</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/agregar.js"></script>
+</body>
+</html>

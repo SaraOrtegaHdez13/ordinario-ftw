@@ -20,6 +20,7 @@
       <idioma codigo="es">Español</idioma>
       <calificacion estrellas="5">5</calificacion>
       <favorita>true</favorita>
+      <portada>resources/ElTriste_Jose.jpg</portada>
     </cancion>
 
     <cancion id="c002" estado="activa">
@@ -36,6 +37,7 @@
       <idioma codigo="es">Español</idioma>
       <calificacion estrellas="5">5</calificacion>
       <favorita>true</favorita>
+      <portada>resources/LaIncondicional_LuisMiguel.jpg</portada>
     </cancion>
 
     <cancion id="c003" estado="activa">
@@ -52,6 +54,7 @@
       <idioma codigo="es">Español</idioma>
       <calificacion estrellas="4">4</calificacion>
       <favorita>false</favorita>
+      <portada>resources/TanEnamorados_Ricardo.jpg</portada>
     </cancion>
 
     <!-- SALSA -->
@@ -69,6 +72,7 @@
       <idioma codigo="es">Español</idioma>
       <calificacion estrellas="5">5</calificacion>
       <favorita>true</favorita>
+      <portada>resources/Lloraras_Oscar.jpg</portada>
     </cancion>
 
     <cancion id="c005" estado="activa">
@@ -85,6 +89,7 @@
       <idioma codigo="es">Español</idioma>
       <calificacion estrellas="5">5</calificacion>
       <favorita>true</favorita>
+      <portada>resources/Devorame_LaloRodriguez.jpg</portada>
     </cancion>
 
     <cancion id="c006" estado="activa">
@@ -101,6 +106,7 @@
       <idioma codigo="es">Español</idioma>
       <calificacion estrellas="4">4</calificacion>
       <favorita>false</favorita>
+      <portada>resources/LaNocheMasLinda_Alberto.jpg</portada>
     </cancion>
 
     <!-- CUMBIA -->
@@ -118,6 +124,7 @@
       <idioma codigo="es">Español</idioma>
       <calificacion estrellas="4">4</calificacion>
       <favorita>false</favorita>
+      <portada>resources/PerfumeDeGardenias_SonoraSantanera.jpg</portada>
     </cancion>
 
     <cancion id="c008" estado="activa">
@@ -134,6 +141,7 @@
       <idioma codigo="es">Español</idioma>
       <calificacion estrellas="4">4</calificacion>
       <favorita>false</favorita>
+      <portada>resources/LosLuchadores_SonoraSantanera.jpg</portada>
     </cancion>
 
     <cancion id="c009" estado="activa">
@@ -150,6 +158,7 @@
       <idioma codigo="es">Español</idioma>
       <calificacion estrellas="3">3</calificacion>
       <favorita>false</favorita>
+      <portada>resources/SoyTuMaestro_LoTelez.jpg</portada>
     </cancion>
 
     <!-- VIDEOJUEGOS -->
@@ -167,6 +176,7 @@
       <idioma codigo="en">Inglés</idioma>
       <calificacion estrellas="5">5</calificacion>
       <favorita>true</favorita>
+      <portada>resources/GustenGardenGalaxy.jpg</portada>
     </cancion>
 
     <cancion id="c011" estado="activa">
@@ -183,6 +193,7 @@
       <idioma codigo="en">Inglés</idioma>
       <calificacion estrellas="5">5</calificacion>
       <favorita>true</favorita>
+      <portada>resources/Megalovania.jpg</portada>
     </cancion>
 
     <cancion id="c012" estado="activa">
@@ -199,6 +210,7 @@
       <idioma codigo="en">Inglés</idioma>
       <calificacion estrellas="5">5</calificacion>
       <favorita>true</favorita>
+      <portada>resources/CancionDePou.jpg</portada>
       <notas>1 hora de pura cultura</notas>
     </cancion>
 
@@ -217,6 +229,7 @@
       <idioma codigo="es">Español</idioma>
       <calificacion estrellas="4">4</calificacion>
       <favorita>false</favorita>
+      <portada>resources/TuPerfume_BandaMS.jpg</portada>
     </cancion>
 
     <cancion id="c014" estado="activa">
@@ -233,6 +246,7 @@
       <idioma codigo="es">Español</idioma>
       <calificacion estrellas="3">3</calificacion>
       <favorita>false</favorita>
+      <portada>resources/DisponibleParaTi.jpg</portada>
     </cancion>
 
     <cancion id="c015" estado="activa">
@@ -249,6 +263,7 @@
       <idioma codigo="es">Español</idioma>
       <calificacion estrellas="4">4</calificacion>
       <favorita>false</favorita>
+      <portada>resources/MeVasAExtrañar.jpg</portada>
     </cancion>
 
     <!-- ROCK -->
@@ -266,6 +281,7 @@
       <idioma codigo="en">Inglés</idioma>
       <calificacion estrellas="5">5</calificacion>
       <favorita>true</favorita>
+      <portada>resources/IWasMadeForLoving.jpg</portada>
     </cancion>
 
     <cancion id="c017" estado="activa">
@@ -282,6 +298,7 @@
       <idioma codigo="en">Inglés</idioma>
       <calificacion estrellas="4">4</calificacion>
       <favorita>false</favorita>
+      <portada>resources/LoveInItSelf.jpg</portada>
     </cancion>
 
     <cancion id="c018" estado="activa">
@@ -298,6 +315,7 @@
       <idioma codigo="en">Inglés</idioma>
       <calificacion estrellas="5">5</calificacion>
       <favorita>true</favorita>
+      <portada>resources/Num.jpg</portada>
     </cancion>
 
     <!-- BOLERO -->
@@ -315,6 +333,7 @@
       <idioma codigo="es">Español</idioma>
       <calificacion estrellas="5">5</calificacion>
       <favorita>true</favorita>
+      <portada>resources/MeOdio.jpg</portada>
     </cancion>
 
     <cancion id="c020" estado="activa">
@@ -331,6 +350,7 @@
       <idioma codigo="es">Español</idioma>
       <calificacion estrellas="5">5</calificacion>
       <favorita>true</favorita>
+      <portada>resources/Contigo_LosPanchos.jpg</portada>
     </cancion>
 
     <cancion id="c021" estado="activa">
@@ -347,6 +367,7 @@
       <idioma codigo="es">Español</idioma>
       <calificacion estrellas="4">4</calificacion>
       <favorita>false</favorita>
+      <portada>resources/CuandoDosAlmasSeQuieren.jpg</portada>
     </cancion>
 
     <!-- POP LATINO -->
@@ -364,6 +385,7 @@
       <idioma codigo="es">Español</idioma>
       <calificacion estrellas="4">4</calificacion>
       <favorita>false</favorita>
+      <portada>resources/CamiloSeptimo_MeDejasCaer.jpg</portada>
     </cancion>
 
     <cancion id="c023" estado="activa">
@@ -380,6 +402,7 @@
       <idioma codigo="es">Español</idioma>
       <calificacion estrellas="5">5</calificacion>
       <favorita>true</favorita>
+      <portada>resources/Antologia_Shakira.jpg</portada>
     </cancion>
 
     <cancion id="c024" estado="activa">
@@ -396,11 +419,11 @@
       <idioma codigo="es">Español</idioma>
       <calificacion estrellas="4">4</calificacion>
       <favorita>false</favorita>
+      <portada>resources/Samo_DoyUnPasoAtras.jpg</portada>
     </cancion>
 
   </canciones>
 
-  <!-- PLAYLISTS -->
   <playlists>
 
     <playlist id="p001" publica="no">

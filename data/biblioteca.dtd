@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!ELEMENT biblioteca (canciones, playlists)>
+<!ELEMENT biblioteca (canciones, playlists, usuarios)>
 
 <!-- Atributo para el elemento biblioteca -->
 <!ATTLIST biblioteca
@@ -11,7 +11,7 @@
 <!-- Lo que debe de tener cada canción -->
 <!ELEMENT cancion (titulo, artista, album, genero, duracion, anio, idioma, calificacion, favorita, portada?, letra?, notas?)>
 
-<!-- A fuerza debe ir el ID, porque con eso se identificar+a cada 
+<!-- A fuerza debe ir el ID, porque con eso se identificará cada
 canción para cuando la queramos poner en una playlist-->
 <!ATTLIST cancion
   id      ID      #REQUIRED
